@@ -260,11 +260,11 @@ document.addEventListener('DOMContentLoaded', function () {
             { label: 'Angular', proficiency: 5, category: 0 }, { label: 'React', proficiency: 2, category: 0 },
             { label: 'Vue.js', proficiency: 3, category: 0 }, { label: 'TypeScript', proficiency: 5, category: 0 },
             { label: 'JavaScript', proficiency: 5, category: 0 }, { label: 'Python', proficiency: 3, category: 0 },
-            { label: 'C#', proficiency: 5, category: 0 }, { label: '.NET', proficiency: 4, category: 0 },
-            { label: 'Node.js', proficiency: 3, category: 0 }, { label: 'Nest.js', proficiency: 3, category: 0 },
+            { label: 'C#', proficiency: 3, category: 0 }, { label: '.NET', proficiency: 4, category: 0 },
+            { label: 'Node.js', proficiency: 4, category: 0 }, { label: 'Nest.js', proficiency: 3, category: 0 },
             { label: 'Azure', proficiency: 5, category: 1 }, { label: 'Azure DevOps', proficiency: 4, category: 1 },
-            { label: 'Serverless', proficiency: 3, category: 1 }, { label: 'Kubernetes', proficiency: 4, category: 1 },
-            { label: 'Docker', proficiency: 3, category: 1 }, { label: 'Jenkins', proficiency: 3, category: 1 },
+            { label: 'Serverless', proficiency: 3, category: 1 }, { label: 'Kubernetes', proficiency: 2, category: 1 },
+            { label: 'Docker', proficiency: 2, category: 1 }, { label: 'Jenkins', proficiency: 3, category: 1 },
             { label: 'Scrum', proficiency: 5, category: 2 }, { label: 'Jira', proficiency: 5, category: 2 },
             { label: 'GraphQL', proficiency: 3, category: 2 }, { label: 'REST APIs', proficiency: 5, category: 2 },
             { label: 'SQL Server', proficiency: 4, category: 2 }, { label: 'Git', proficiency: 5, category: 2 },
@@ -300,7 +300,17 @@ document.addEventListener('DOMContentLoaded', function () {
             processedSkills.labels.push(cvContent[lang].skills_labels[index]);
             processedSkills.datasets[0].data.push(0);
 
-            category.sort((a, b) => b.proficiency - a.proficiency).forEach(skill => {
+            category.sort((a, b) => {
+                // First sort by proficiency
+                if (b.proficiency !== a.proficiency) {
+                    return b.proficiency - a.proficiency;
+                }
+                // If proficiency is equal, prioritize Angular
+                if (a.label === 'Angular') return -1;
+                if (b.label === 'Angular') return 1;
+                // For other skills with equal proficiency, maintain alphabetical order
+                return a.label.localeCompare(b.label);
+            }).forEach(skill => {
                 processedSkills.labels.push(skill.label);
                 processedSkills.datasets[0].data.push(skill.proficiency);
             });
@@ -316,6 +326,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 scales: {
                     y: {
                         beginAtZero: true,
+                         display: true,
                         ticks: {
                             color: '#475569', // slate-600
                             font: function (context) {
