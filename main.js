@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
             experience_projects_label: 'Wichtige Projekte:',
             experience_data: [
                 {
-                    company: "Selbstständig (als Senior Software Engineer)",
+                    company: "MaibornWolff GmbH",
                     period: "Seit 2022",
                     role: "Senior Software Engineer",
                     projects: [
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
             experience_projects_label: 'Key Projects:',
             experience_data: [
                 {
-                    company: "Self-Employed (as Senior Software Engineer)",
+                    company: "MaibornWolff GmbH",
                     period: "Since 2022",
                     role: "Senior Software Engineer",
                     projects: [
