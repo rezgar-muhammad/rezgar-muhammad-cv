@@ -123,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
             languages_data: [
                 { name: 'Kurdisch', proficiency: 'Muttersprache' },
                 { name: 'Arabisch', proficiency: 'Muttersprache' },
-                { name: 'Englisch', proficiency: 'Fortgeschritten' },
-                { name: 'Deutsch', proficiency: 'Fortgeschritten' }
+                { name: 'Englisch', proficiency: 'C1' },
+                { name: 'Deutsch', proficiency: 'C1' }
             ],
             hobbies_title: 'Hobbys',
             hobbies_data: [
