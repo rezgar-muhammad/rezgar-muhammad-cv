@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
             certifications_title_mobile: 'Zertifizierungen',
             education_title: 'Ausbildung',
             education_title_mobile: 'Ausbildung',
-            others_title: 'Kontakt',
-            others_title_mobile: 'Kontakt',
+            others_title: 'Sonstiges',
+            others_title_mobile: 'Sonstiges',
             profile_title: 'Profilzusammenfassung',
             profile_summary: 'Erfahrener Senior Software Engineer mit über 7 Jahren Erfahrung in der Webentwicklung, spezialisiert auf Full-Stack- und Frontend-Lösungen. Nachgewiesene Expertise in <b>Web-Engineering</b>, <b>Softwarearchitektur</b> und <b>Cloud-Technologien</b> (mit Fokus auf <b>Azure</b>). Kompetent in der Ausführung komplexer Projekte von der Konzeption bis zur Implementierung, mit starkem Fokus auf qualitativ hochwertigen Code und teamübergreifende Zusammenarbeit in einem agilen Umfeld.',
             experience_title: 'Berufserfahrung',
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
             contact_location_text: 'Hamburg, Deutschland',
             contact_xing_label: 'Xing Profil:',
             contact_linkedin_label: 'LinkedIn Profil:',
-            footer_text_1: 'Konzipiert als interaktives Erlebnis. Lassen Sie uns in Verbindung treten!',
+            footer_text_1: 'Coding is my passion. Let\'s connect!',
             footer_text_2: '&copy; 2025 Rezgar Muhammad'
         },
         en: {
@@ -152,8 +152,8 @@ document.addEventListener('DOMContentLoaded', function () {
             certifications_title_mobile: 'Certifications',
             education_title: 'Education',
             education_title_mobile: 'Education',
-            others_title: 'Contact',
-            others_title_mobile: 'Contact',
+            others_title: 'Other',
+            others_title_mobile: 'Other',
             profile_title: 'Profile Summary',
             profile_summary: 'Experienced Senior Software Engineer with over 7 years of experience in web development, specializing in full-stack and frontend solutions. Proven expertise in <b>Web Engineering</b>, <b>Software Architecture</b>, and <b>Cloud Technologies</b> (with a focus on <b>Azure</b>). Proficient in executing complex projects, from conception to implementation, with a strong focus on high-quality code and cross-functional collaboration in an an agile environment.',
             experience_title: 'Professional Experience',
@@ -238,8 +238,8 @@ document.addEventListener('DOMContentLoaded', function () {
             languages_data: [
                 { name: 'Kurdish', proficiency: 'Native' },
                 { name: 'Arabic', proficiency: 'Native' },
-                { name: 'English', proficiency: 'Advanced' },
-                { name: 'German', proficiency: 'Advanced' }
+                { name: 'English', proficiency: 'C1' },
+                { name: 'German', proficiency: 'C1' }
             ],
             hobbies_title: 'Hobbies',
             hobbies_data: [
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
             contact_location_text: 'Hamburg, Germany',
             contact_xing_label: 'Xing Profile:',
             contact_linkedin_label: 'LinkedIn Profile:',
-            footer_text_1: 'Designed to be an interactive experience. Let\'s connect!',
+            footer_text_1: 'Coding is my passion. Let\'s connect!',
             footer_text_2: '&copy; 2025 Rezgar Muhammad'
         },
         skills_datasets: [
