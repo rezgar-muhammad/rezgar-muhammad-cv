@@ -50,6 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     role: "Senior Software Engineer",
                     projects: [
                         {
+                            name: "ReMIS 2 (Airbus Helicopters)",
+                            description: "Das Resource Management Information System (ReMIS) ist eine zentrale Software, die von Airbus Helicopters in mehreren europäischen Ländern zur Organisation der Verteilung von Mitarbeitern und anderen Ressourcen auf Projekte eingesetzt wird. Es ist ein entscheidendes internes Tool zur Planung der Arbeitsbelastung von Mitarbeitern und externen Lieferanten und zur Verteilung ihrer Arbeitskraft auf verschiedene Projekte. All diese Daten werden zur Erstellung verschiedener Berichte und Grafiken verwendet, die eine Grundlage für Managemententscheidungen bilden und Teammitgliedern helfen, die notwendigen Ressourcen für ihre Projekte zu sammeln und zu organisieren.",
+                            role: "Full-Stack-Entwickler",
+                            technologies: "Kotlin, Spring Boot, Spring Data, Angular, MariaDB, QueryDSL, Azure"
+                        },
+                        {
                             name: "Reporting Dashboard für Beiersdorf",
                             description: "Full-Stack-Entwicklung eines anpassbaren Dashboards für Geschäftsberichte, das Daten über APIs konsolidiert.",
                             role: "Full-Stack-Entwickler",
@@ -165,6 +171,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     role: "Senior Software Engineer",
                     projects: [
                         {
+                            name: "ReMIS 2 (Airbus Helicopters)",
+                            description: "The Resource Management Information System (ReMIS) is a central software used by Airbus Helicopters in several countries of Europe to organize the distribution of people and other resources to project. It's a crucial internal tool to plan the workloads of employees and external suppliers and distribute their manpower accross different projects. All those data is used to generate several reports and graphics which a foundation for management descisions as well as helping squad member gathering and organizing the necessary resources for their projects.",
+                            role: "Full-stack developer",
+                            technologies: "Kotlin, Spring Boot, Spring Data, Angular, MariaDB, QueryDSL, Azure"
+                        },
+                        {
                             name: "Reporting Dashboard for Beiersdorf",
                             description: "Full-stack development of a customizable dashboard for business reports, which consolidates data via APIs.",
                             role: "Full-stack Developer",
@@ -260,14 +272,17 @@ document.addEventListener('DOMContentLoaded', function () {
             { label: 'Angular', proficiency: 5, category: 0 }, { label: 'React', proficiency: 2, category: 0 },
             { label: 'Vue.js', proficiency: 3, category: 0 }, { label: 'TypeScript', proficiency: 5, category: 0 },
             { label: 'JavaScript', proficiency: 5, category: 0 }, { label: 'Python', proficiency: 3, category: 0 },
-            { label: 'C#', proficiency: 3, category: 0 }, { label: '.NET', proficiency: 4, category: 0 },
-            { label: 'Node.js', proficiency: 4, category: 0 }, { label: 'Nest.js', proficiency: 3, category: 0 },
+            { label: 'Kotlin', proficiency: 4, category: 0 }, { label: 'Spring Boot', proficiency: 4, category: 0 },
+            { label: 'Spring Data', proficiency: 3, category: 0 }, { label: 'C#', proficiency: 3, category: 0 },
+            { label: '.NET', proficiency: 4, category: 0 }, { label: 'Node.js', proficiency: 4, category: 0 },
+            { label: 'Nest.js', proficiency: 3, category: 0 }, { label: 'QueryDSL', proficiency: 3, category: 0 },
             { label: 'Azure', proficiency: 5, category: 1 }, { label: 'Azure DevOps', proficiency: 4, category: 1 },
             { label: 'Serverless', proficiency: 3, category: 1 }, { label: 'Kubernetes', proficiency: 2, category: 1 },
             { label: 'Docker', proficiency: 2, category: 1 }, { label: 'Jenkins', proficiency: 3, category: 1 },
             { label: 'Scrum', proficiency: 5, category: 2 }, { label: 'Jira', proficiency: 5, category: 2 },
             { label: 'GraphQL', proficiency: 3, category: 2 }, { label: 'REST APIs', proficiency: 5, category: 2 },
-            { label: 'SQL Server', proficiency: 4, category: 2 }, { label: 'Git', proficiency: 5, category: 2 },
+            { label: 'SQL Server', proficiency: 4, category: 2 }, { label: 'MariaDB', proficiency: 3, category: 2 },
+            { label: 'Git', proficiency: 5, category: 2 },
             { label: 'Design Patterns', proficiency: 4, category: 3 }, { label: 'NF Requirements', proficiency: 4, category: 3 },
             { label: 'Documentation', proficiency: 5, category: 3 }
         ]
