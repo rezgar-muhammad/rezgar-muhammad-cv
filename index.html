@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,361 +12,111 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0a0b;
-    --bg2: #111113;
-    --bg3: #18181b;
-    --accent: #e8632a;
-    --accent2: #f59e4a;
-    --text: #e8e6e1;
-    --muted: #6b6b70;
-    --border: #222226;
-    --card: #141416;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.4;
-  }
- 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.4rem 4rem;
-    background: rgba(10,10,11,0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.85rem;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-decoration: none;
-  }
-  .nav-right { display: flex; align-items: center; gap: 2.5rem; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
- 
-  /* LANGUAGE TOGGLE */
-  .lang-toggle {
-    display: flex;
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .lang-btn {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    padding: 0.4rem 0.85rem;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    color: var(--muted);
-    transition: all 0.2s;
-    text-transform: uppercase;
-  }
-  .lang-btn.active {
-    background: var(--accent);
-    color: #fff;
-  }
-  .lang-btn:hover:not(.active) { color: var(--text); }
- 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 4rem;
-    padding-top: 90px;
-    overflow: hidden;
-  }
-  .hero-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-right: 4rem;
-    padding-bottom: 4rem;
-  }
-  .hero-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.72rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .hero-tag::before { content: ''; width: 2rem; height: 1px; background: var(--accent); }
-  h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(3.2rem, 5.5vw, 5.5rem);
-    line-height: 1.02;
-    font-weight: 400;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-  }
-  h1 em { font-style: italic; color: var(--accent); }
-  .hero-desc { font-size: 1rem; color: var(--muted); max-width: 420px; margin-bottom: 2.5rem; line-height: 1.85; }
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 2rem;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: all 0.25s;
-    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
-  }
-  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 2rem;
-    border: 1px solid var(--border);
-    color: var(--text);
-    text-decoration: none;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: all 0.25s;
-  }
-  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-  .hero-right { display: flex; align-items: center; justify-content: center; }
-  .hero-stats {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    width: 100%;
-    max-width: 320px;
-  }
-  .stat-box { background: var(--card); padding: 2rem; transition: background 0.2s; }
-  .stat-box:hover { background: var(--bg3); }
-  .stat-num { font-family: 'DM Serif Display', serif; font-size: 3.2rem; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
-  .stat-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
-  .available-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(232,99,42,0.1);
-    border: 1px solid rgba(232,99,42,0.3);
-    padding: 0.35rem 0.9rem;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.66rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    margin-bottom: 1.75rem;
-    width: fit-content;
-  }
-  .available-dot {
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: pulse 2s ease infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
- 
-  /* SECTIONS */
-  section { padding: 6rem 4rem; border-top: 1px solid var(--border); }
-  .section-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--accent);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .section-tag::before { content: ''; width: 2rem; height: 1px; background: var(--accent); }
-  h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
-    font-weight: 400;
-    line-height: 1.1;
-    margin-bottom: 2.5rem;
-    letter-spacing: -0.02em;
-  }
-  h2 em { font-style: italic; color: var(--accent); }
- 
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-  }
-  .skill-group { background: var(--card); padding: 1.75rem; transition: background 0.2s; }
-  .skill-group:hover { background: var(--bg3); }
-  .skill-group-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.68rem;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-  .skill-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--text);
-    background: var(--bg3);
-    border: 1px solid var(--border);
-    padding: 0.28rem 0.7rem;
-    transition: all 0.2s;
-    cursor: default;
-  }
-  .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
- 
-  /* PROJECTS */
-  .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
-  .project-item {
-    background: var(--card);
-    padding: 2.25rem 2.5rem;
-    display: grid;
-    grid-template-columns: 2.5rem 1fr auto;
-    gap: 1.5rem;
-    align-items: start;
-    transition: background 0.2s;
-  }
-  .project-item:hover { background: var(--bg3); }
-  .project-num { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); padding-top: 0.3rem; }
-  .project-content h3 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.25rem; }
-  .project-client { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.75rem; text-transform: uppercase; }
-  .project-desc { font-size: 0.88rem; color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 1rem; }
-  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-  .tech-chip {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.63rem;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 0.18rem 0.55rem;
-    transition: all 0.2s;
-  }
-  .project-item:hover .tech-chip { border-color: #2a2a2e; color: var(--text); }
-  .project-role { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); white-space: nowrap; padding-top: 0.3rem; text-align: right; }
- 
-  /* TIMELINE */
-  .timeline { position: relative; padding-left: 1.5rem; }
-  .timeline::before { content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0; width: 1px; background: var(--border); }
-  .timeline-item { position: relative; padding-left: 2rem; padding-bottom: 2.5rem; }
-  .timeline-item:last-child { padding-bottom: 0; }
-  .timeline-item::before { content: ''; position: absolute; left: -1.5rem; top: 0.45rem; width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg); }
-  .timeline-period { font-family: 'DM Mono', monospace; font-size: 0.66rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.3rem; }
-  .timeline-role { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.2rem; }
-  .timeline-company { font-size: 0.85rem; color: var(--muted); }
- 
-  /* CERTS */
-  .certs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-  .cert-item { background: var(--card); padding: 1.5rem 1.75rem; display: flex; align-items: flex-start; gap: 1rem; transition: background 0.2s; }
-  .cert-item:hover { background: var(--bg3); }
-  .cert-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
-  .cert-name { font-size: 0.88rem; font-weight: 500; margin-bottom: 0.2rem; }
-  .cert-date { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--accent); letter-spacing: 0.08em; }
- 
-  /* CONTACT */
-  .contact-section { background: var(--card); border-top: 1px solid var(--border); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .contact-left p { color: var(--muted); max-width: 380px; margin-bottom: 2rem; }
-  .contact-links { display: flex; flex-direction: column; border: 1px solid var(--border); }
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.1rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 0.78rem;
-    transition: all 0.2s;
-    background: var(--bg);
-  }
-  .contact-link:last-child { border-bottom: none; }
-  .contact-link:hover { background: var(--bg3); color: var(--accent); padding-left: 2rem; }
-  .contact-link-icon { color: var(--accent); width: 1.25rem; text-align: center; flex-shrink: 0; }
- 
-  /* FOOTER */
-  footer {
-    padding: 1.75rem 4rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
-  .footer-location { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
-  .footer-location::before { content: '◈'; color: var(--accent); }
- 
-  /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); }
-  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
- 
-  /* CURSOR BLINK */
-  .cursor-blink {
-    display: inline-block;
-    width: 3px; height: 0.8em;
-    background: var(--accent);
-    margin-left: 3px;
-    vertical-align: middle;
-    animation: blink 1s step-end infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
- 
-  /* ANIMATIONS */
-  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-  .fade-up { opacity:0; animation: fadeUp 0.75s ease forwards; }
-  .d1{animation-delay:0.1s} .d2{animation-delay:0.25s} .d3{animation-delay:0.4s} .d4{animation-delay:0.55s}
- 
-  /* RESPONSIVE */
+  :root{--bg:#0a0a0b;--bg2:#111113;--bg3:#18181b;--accent:#e8632a;--accent2:#f59e4a;--text:#e8e6e1;--muted:#6b6b70;--border:#222226;--card:#141416}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 4rem;background:rgba(10,10,11,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'DM Mono',monospace;font-size:.85rem;color:var(--accent);letter-spacing:.08em;text-decoration:none}
+  .nav-right{display:flex;align-items:center;gap:2.5rem}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .lang-toggle{display:flex;background:var(--bg3);border:1px solid var(--border);overflow:hidden}
+  .lang-btn{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;padding:.4rem .85rem;cursor:pointer;border:none;background:transparent;color:var(--muted);transition:all .2s;text-transform:uppercase}
+  .lang-btn.active{background:var(--accent);color:#fff}
+  .lang-btn:hover:not(.active){color:var(--text)}
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding:0 4rem;padding-top:90px;overflow:hidden}
+  .hero-left{display:flex;flex-direction:column;justify-content:center;padding-right:4rem;padding-bottom:4rem}
+  .hero-tag{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+  .hero-tag::before{content:'';width:2rem;height:1px;background:var(--accent)}
+  h1{font-family:'DM Serif Display',serif;font-size:clamp(3.2rem,5.5vw,5.5rem);line-height:1.02;font-weight:400;letter-spacing:-.02em;margin-bottom:1.5rem}
+  h1 em{font-style:italic;color:var(--accent)}
+  .hero-desc{font-size:1rem;color:var(--muted);max-width:420px;margin-bottom:2.5rem;line-height:1.85}
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:var(--accent);color:#fff;text-decoration:none;font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;transition:all .25s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
+  .btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+  .btn-secondary{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;border:1px solid var(--border);color:var(--text);text-decoration:none;font-family:'DM Mono',monospace;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;transition:all .25s}
+  .btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  .hero-right{display:flex;align-items:center;justify-content:center}
+  .hero-stats{display:grid;grid-template-rows:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);width:100%;max-width:320px}
+  .stat-box{background:var(--card);padding:2rem;transition:background .2s}
+  .stat-box:hover{background:var(--bg3)}
+  .stat-num{font-family:'DM Serif Display',serif;font-size:3.2rem;color:var(--accent);line-height:1;margin-bottom:.4rem}
+  .stat-label{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.15em;text-transform:uppercase}
+  .available-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(232,99,42,.1);border:1px solid rgba(232,99,42,.3);padding:.35rem .9rem;font-family:'DM Mono',monospace;font-size:.66rem;color:var(--accent);letter-spacing:.1em;margin-bottom:1.75rem;width:fit-content}
+  .available-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s ease infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+  section{padding:6rem 4rem;border-top:1px solid var(--border)}
+  .section-tag{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
+  .section-tag::before{content:'';width:2rem;height:1px;background:var(--accent)}
+  h2{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,3.5vw,3.5rem);font-weight:400;line-height:1.1;margin-bottom:2.5rem;letter-spacing:-.02em}
+  h2 em{font-style:italic;color:var(--accent)}
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+  .skill-group{background:var(--card);padding:1.75rem;transition:background .2s}
+  .skill-group:hover{background:var(--bg3)}
+  .skill-group-title{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--border)}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:.45rem}
+  .skill-tag{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text);background:var(--bg3);border:1px solid var(--border);padding:.28rem .7rem;transition:all .2s;cursor:default}
+  .skill-tag:hover{border-color:var(--accent);color:var(--accent)}
+  /* project cards */
+  .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+  .project-card{background:var(--card);display:flex;flex-direction:column;transition:background .2s;overflow:hidden}
+  .project-card:hover{background:var(--bg3)}
+  .proj-thumb-wrap{position:relative;width:100%;overflow:hidden;border-bottom:1px solid var(--border);background:#0d0d0f;line-height:0}
+  .proj-thumb{width:100%;height:auto;display:block;transition:opacity .3s}
+  .project-card:hover .proj-thumb{opacity:.85}
+  .proj-thumb-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(10,10,11,.85) 100%);pointer-events:none}
+  .proj-num-badge{position:absolute;top:1rem;left:1rem;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--accent);background:rgba(10,10,11,.8);border:1px solid rgba(232,99,42,.4);padding:.2rem .6rem;letter-spacing:.08em}
+  .proj-body{padding:1.75rem;display:flex;flex-direction:column;flex:1}
+  .proj-client{font-family:'DM Mono',monospace;font-size:.66rem;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+  .proj-body h3{font-family:'DM Serif Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:.75rem;line-height:1.3}
+  .proj-desc{font-size:.85rem;color:var(--muted);line-height:1.8;margin-bottom:1.25rem;flex:1}
+  .proj-footer{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem}
+  .proj-tech{display:flex;flex-wrap:wrap;gap:.35rem}
+  .tech-chip{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);border:1px solid var(--border);padding:.18rem .5rem;transition:all .2s}
+  .project-card:hover .tech-chip{border-color:#2a2a2e;color:var(--text)}
+  .proj-role{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--muted);white-space:nowrap;flex-shrink:0}
+  /* timeline */
+  .timeline{position:relative;padding-left:1.5rem}
+  .timeline::before{content:'';position:absolute;left:0;top:.5rem;bottom:0;width:1px;background:var(--border)}
+  .timeline-item{position:relative;padding-left:2rem;padding-bottom:2.5rem}
+  .timeline-item:last-child{padding-bottom:0}
+  .timeline-item::before{content:'';position:absolute;left:-1.5rem;top:.45rem;width:7px;height:7px;background:var(--accent);transform:rotate(45deg)}
+  .timeline-period{font-family:'DM Mono',monospace;font-size:.66rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.3rem}
+  .timeline-role{font-family:'DM Serif Display',serif;font-size:1.3rem;font-weight:400;margin-bottom:.2rem}
+  .timeline-company{font-size:.85rem;color:var(--muted)}
+  .certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+  .cert-item{background:var(--card);padding:1.5rem 1.75rem;display:flex;align-items:flex-start;gap:1rem;transition:background .2s}
+  .cert-item:hover{background:var(--bg3)}
+  .cert-icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem}
+  .cert-name{font-size:.88rem;font-weight:500;margin-bottom:.2rem}
+  .cert-date{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--accent);letter-spacing:.08em}
+  .contact-section{background:var(--card);border-top:1px solid var(--border)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+  .contact-left p{color:var(--muted);max-width:380px;margin-bottom:2rem}
+  .contact-links{display:flex;flex-direction:column;border:1px solid var(--border)}
+  .contact-link{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);text-decoration:none;color:var(--text);font-family:'DM Mono',monospace;font-size:.78rem;transition:all .2s;background:var(--bg)}
+  .contact-link:last-child{border-bottom:none}
+  .contact-link:hover{background:var(--bg3);color:var(--accent);padding-left:2rem}
+  .contact-link-icon{color:var(--accent);width:1.25rem;text-align:center;flex-shrink:0}
+  footer{padding:1.75rem 4rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+  .footer-copy{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted)}
+  .footer-location{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);display:flex;align-items:center;gap:.5rem}
+  .footer-location::before{content:'◈';color:var(--accent)}
+  ::-webkit-scrollbar{width:3px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--border)}
+  ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+  .cursor-blink{display:inline-block;width:3px;height:.8em;background:var(--accent);margin-left:3px;vertical-align:middle;animation:blink 1s step-end infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  .fade-up{opacity:0;animation:fadeUp .75s ease forwards}
+  .d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}
+  [data-de]{display:none}
+  body.lang-de [data-en]{display:none}
+  body.lang-de [data-de]{display:revert}
   @media(max-width:900px){
     nav{padding:1.2rem 1.5rem}
     .nav-links{display:none}
@@ -376,22 +126,15 @@
     .hero-stats{max-width:100%}
     section{padding:4rem 1.5rem}
     .skills-grid{grid-template-columns:1fr}
-    .project-item{grid-template-columns:2rem 1fr}
-    .project-role{display:none}
+    .projects-grid{grid-template-columns:1fr}
     .certs-grid{grid-template-columns:1fr}
     .contact-grid{grid-template-columns:1fr;gap:2.5rem}
     footer{flex-direction:column;gap:1rem;padding:1.5rem;text-align:center}
   }
- 
-  /* [de] hidden by default */
-  [data-de] { display: none; }
-  body.lang-de [data-en] { display: none; }
-  body.lang-de [data-de] { display: revert; }
 </style>
 </head>
 <body class="lang-en">
- 
-<!-- NAV -->
+
 <nav>
   <a href="#" class="nav-logo">RM.dev</a>
   <div class="nav-right">
@@ -407,468 +150,347 @@
     </div>
   </div>
 </nav>
- 
-<!-- HERO -->
+
 <section class="hero" style="border-top:none">
   <div class="hero-left">
-    <div class="available-badge fade-up d1">
-      <span class="available-dot"></span>
-      <span data-en>Available for freelance projects</span>
-      <span data-de>Verfügbar für Freelance-Projekte</span>
-    </div>
-    <div class="hero-tag fade-up d1">
-      <span data-en>Senior Software Engineer</span>
-      <span data-de>Senior Software Engineer</span>
-    </div>
+    <div class="available-badge fade-up d1"><span class="available-dot"></span><span data-en>Available for freelance projects</span><span data-de>Verfügbar für Freelance-Projekte</span></div>
+    <div class="hero-tag fade-up d1"><span data-en>Senior Software Engineer</span><span data-de>Senior Software Engineer</span></div>
     <h1 class="fade-up d2">Rezgar<br><em>Muhammad</em><span class="cursor-blink"></span></h1>
-    <p class="hero-desc fade-up d3" data-en>
-      Full-stack engineer specializing in Angular, Azure cloud architecture, and scalable enterprise applications.
-      Based in Hamburg — delivering production-grade solutions since 2017.
-    </p>
-    <p class="hero-desc fade-up d3" data-de>
-      Full-Stack-Entwickler mit Spezialisierung auf Angular, Azure-Cloud-Architektur und skalierbare Unternehmensanwendungen.
-      Ansässig in Hamburg — liefere produktionsreife Lösungen seit 2017.
-    </p>
+    <p class="hero-desc fade-up d3" data-en>Full-stack engineer specializing in Angular, Azure cloud architecture, and scalable enterprise applications. Based in Hamburg — delivering production-grade solutions since 2017.</p>
+    <p class="hero-desc fade-up d3" data-de>Full-Stack-Entwickler mit Spezialisierung auf Angular, Azure-Cloud-Architektur und skalierbare Unternehmensanwendungen. Ansässig in Hamburg — liefere produktionsreife Lösungen seit 2017.</p>
     <div class="hero-ctas fade-up d4">
-      <a href="#projects" class="btn-primary">
-        <span data-en>View Projects →</span>
-        <span data-de>Projekte ansehen →</span>
-      </a>
-      <a href="#contact" class="btn-secondary">
-        <span data-en>Get in Touch</span>
-        <span data-de>Kontakt aufnehmen</span>
-      </a>
+      <a href="#projects" class="btn-primary"><span data-en>View Projects →</span><span data-de>Projekte ansehen →</span></a>
+      <a href="#contact" class="btn-secondary"><span data-en>Get in Touch</span><span data-de>Kontakt aufnehmen</span></a>
     </div>
   </div>
   <div class="hero-right fade-up d3">
     <div class="hero-stats">
-      <div class="stat-box">
-        <div class="stat-num">7+</div>
-        <div class="stat-label">
-          <span data-en>Years of Experience</span>
-          <span data-de>Jahre Erfahrung</span>
-        </div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">6</div>
-        <div class="stat-label">
-          <span data-en>Enterprise Projects</span>
-          <span data-de>Unternehmensprojekte</span>
-        </div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">5</div>
-        <div class="stat-label">
-          <span data-en>Certifications</span>
-          <span data-de>Zertifizierungen</span>
-        </div>
-      </div>
+      <div class="stat-box"><div class="stat-num">7+</div><div class="stat-label"><span data-en>Years of Experience</span><span data-de>Jahre Erfahrung</span></div></div>
+      <div class="stat-box"><div class="stat-num">6</div><div class="stat-label"><span data-en>Enterprise Projects</span><span data-de>Unternehmensprojekte</span></div></div>
+      <div class="stat-box"><div class="stat-num">5</div><div class="stat-label"><span data-en>Certifications</span><span data-de>Zertifizierungen</span></div></div>
     </div>
   </div>
 </section>
- 
-<!-- SKILLS -->
+
 <section id="skills">
-  <div class="section-tag">
-    <span data-en>Expertise</span><span data-de>Expertise</span>
-  </div>
-  <h2>
-    <span data-en>Technical <em>Skills</em></span>
-    <span data-de>Technische <em>Kenntnisse</em></span>
-  </h2>
+  <div class="section-tag"><span data-en>Expertise</span><span data-de>Expertise</span></div>
+  <h2><span data-en>Technical <em>Skills</em></span><span data-de>Technische <em>Kenntnisse</em></span></h2>
   <div class="skills-grid">
-    <div class="skill-group">
-      <div class="skill-group-title">Frontend</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Angular</span><span class="skill-tag">React</span>
-        <span class="skill-tag">Vue.js</span><span class="skill-tag">TypeScript</span>
-        <span class="skill-tag">JavaScript</span><span class="skill-tag">RxJS</span>
-        <span class="skill-tag">NgRx</span><span class="skill-tag">GraphQL</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Backend</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Kotlin</span><span class="skill-tag">Spring Boot</span>
-        <span class="skill-tag">C# / .NET</span><span class="skill-tag">Node.js</span>
-        <span class="skill-tag">Nest.js</span><span class="skill-tag">Python</span>
-        <span class="skill-tag">REST APIs</span><span class="skill-tag">MariaDB</span>
-        <span class="skill-tag">SQL Server</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Cloud & DevOps</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Azure</span><span class="skill-tag">Azure Functions</span>
-        <span class="skill-tag">Kubernetes</span><span class="skill-tag">Docker</span>
-        <span class="skill-tag">Azure DevOps</span><span class="skill-tag">Jenkins</span>
-        <span class="skill-tag">Serverless</span><span class="skill-tag">CI/CD</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">
-        <span data-en>Architecture</span><span data-de>Architektur</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Software Architecture</span>
-        <span class="skill-tag">Design Patterns</span>
-        <span class="skill-tag">iSAQB Certified</span>
-        <span class="skill-tag">Microservices</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">
-        <span data-en>Methods & Tools</span><span data-de>Methoden & Werkzeuge</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Scrum / Agile</span><span class="skill-tag">Jira</span>
-        <span class="skill-tag">Git</span><span class="skill-tag">Keycloak</span>
-        <span class="skill-tag">OpenAI / LLM</span><span class="skill-tag">Swagger</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">
-        <span data-en>Languages</span><span data-de>Sprachen</span>
-      </div>
-      <div class="skill-tags">
-        <span class="skill-tag">Kurdish — <span data-en>Native</span><span data-de>Muttersprache</span></span>
-        <span class="skill-tag">Arabic — <span data-en>Native</span><span data-de>Muttersprache</span></span>
-        <span class="skill-tag">English — C1</span>
-        <span class="skill-tag">Deutsch — C1</span>
-      </div>
-    </div>
+    <div class="skill-group"><div class="skill-group-title">Frontend</div><div class="skill-tags"><span class="skill-tag">Angular</span><span class="skill-tag">React</span><span class="skill-tag">Vue.js</span><span class="skill-tag">TypeScript</span><span class="skill-tag">JavaScript</span><span class="skill-tag">RxJS</span><span class="skill-tag">NgRx</span><span class="skill-tag">GraphQL</span></div></div>
+    <div class="skill-group"><div class="skill-group-title">Backend</div><div class="skill-tags"><span class="skill-tag">Kotlin</span><span class="skill-tag">Spring Boot</span><span class="skill-tag">C# / .NET</span><span class="skill-tag">Node.js</span><span class="skill-tag">Nest.js</span><span class="skill-tag">Python</span><span class="skill-tag">REST APIs</span><span class="skill-tag">MariaDB</span><span class="skill-tag">SQL Server</span></div></div>
+    <div class="skill-group"><div class="skill-group-title">Cloud & DevOps</div><div class="skill-tags"><span class="skill-tag">Azure</span><span class="skill-tag">Azure Functions</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">Docker</span><span class="skill-tag">Azure DevOps</span><span class="skill-tag">Jenkins</span><span class="skill-tag">Serverless</span><span class="skill-tag">CI/CD</span></div></div>
+    <div class="skill-group"><div class="skill-group-title"><span data-en>Architecture</span><span data-de>Architektur</span></div><div class="skill-tags"><span class="skill-tag">Software Architecture</span><span class="skill-tag">Design Patterns</span><span class="skill-tag">iSAQB Certified</span><span class="skill-tag">Microservices</span></div></div>
+    <div class="skill-group"><div class="skill-group-title"><span data-en>Methods & Tools</span><span data-de>Methoden & Werkzeuge</span></div><div class="skill-tags"><span class="skill-tag">Scrum / Agile</span><span class="skill-tag">Jira</span><span class="skill-tag">Git</span><span class="skill-tag">Keycloak</span><span class="skill-tag">OpenAI / LLM</span><span class="skill-tag">Swagger</span></div></div>
+    <div class="skill-group"><div class="skill-group-title"><span data-en>Languages</span><span data-de>Sprachen</span></div><div class="skill-tags"><span class="skill-tag">Kurdish — <span data-en>Native</span><span data-de>Muttersprache</span></span><span class="skill-tag">Arabic — <span data-en>Native</span><span data-de>Muttersprache</span></span><span class="skill-tag">English — C1</span><span class="skill-tag">Deutsch — C1</span></div></div>
   </div>
 </section>
- 
-<!-- PROJECTS -->
+
 <section id="projects">
-  <div class="section-tag">
-    <span data-en>Work</span><span data-de>Arbeit</span>
-  </div>
-  <h2>
-    <span data-en>Selected <em>Projects</em></span>
-    <span data-de>Ausgewählte <em>Projekte</em></span>
-  </h2>
-  <div class="projects-list">
- 
-    <div class="project-item">
-      <div class="project-num">01</div>
-      <div class="project-content">
-        <h3>
-          <span data-en>Resource Management Platform</span>
-          <span data-de>Ressourcenverwaltungsplattform</span>
-        </h3>
-        <div class="project-client">
-          <span data-en>European Aerospace Sector</span>
-          <span data-de>Europäische Luft- und Raumfahrtbranche</span>
-        </div>
-        <p class="project-desc" data-en>Central resource management system used across multiple European countries to organize personnel distribution, workload planning, and manpower allocation. Generates executive reports and analytics dashboards for key management decisions.</p>
-        <p class="project-desc" data-de>Zentrales Ressourcenverwaltungssystem, das in mehreren europäischen Ländern eingesetzt wird, um die Personalverteilung, Auslastungsplanung und Ressourcenzuweisung zu organisieren. Erstellt Managementberichte und Analyse-Dashboards für wichtige Entscheidungen.</p>
-        <div class="project-tech">
-          <span class="tech-chip">Kotlin</span><span class="tech-chip">Spring Boot</span>
-          <span class="tech-chip">Angular</span><span class="tech-chip">MariaDB</span>
-          <span class="tech-chip">QueryDSL</span><span class="tech-chip">Azure</span>
-        </div>
+  <div class="section-tag"><span data-en>Work</span><span data-de>Arbeit</span></div>
+  <h2><span data-en>Selected <em>Projects</em></span><span data-de>Ausgewählte <em>Projekte</em></span></h2>
+  <div class="projects-grid">
+
+    <!-- 01 -->
+    <div class="project-card">
+      <div class="proj-thumb-wrap">
+        <svg class="proj-thumb" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="360" fill="#0d0d0f"/>
+          <g stroke="#1e1e22" stroke-width="0.5"><line x1="0" y1="72" x2="640" y2="72"/><line x1="0" y1="144" x2="640" y2="144"/><line x1="0" y1="216" x2="640" y2="216"/><line x1="0" y1="288" x2="640" y2="288"/><line x1="80" y1="0" x2="80" y2="360"/><line x1="160" y1="0" x2="160" y2="360"/><line x1="240" y1="0" x2="240" y2="360"/><line x1="320" y1="0" x2="320" y2="360"/><line x1="400" y1="0" x2="400" y2="360"/><line x1="480" y1="0" x2="480" y2="360"/><line x1="560" y1="0" x2="560" y2="360"/></g>
+          <g stroke="#e8632a" stroke-width="1" stroke-opacity="0.3" fill="none"><line x1="320" y1="95" x2="180" y2="190"/><line x1="320" y1="95" x2="460" y2="190"/><line x1="180" y1="190" x2="115" y2="280"/><line x1="180" y1="190" x2="245" y2="280"/><line x1="460" y1="190" x2="395" y2="280"/><line x1="460" y1="190" x2="525" y2="280"/></g>
+          <circle cx="320" cy="95" r="24" fill="#141416" stroke="#e8632a" stroke-width="1.5"/><circle cx="320" cy="95" r="9" fill="#e8632a"/>
+          <circle cx="180" cy="190" r="17" fill="#141416" stroke="#e8632a" stroke-width="1" stroke-opacity="0.8"/><circle cx="180" cy="190" r="6" fill="#e8632a" fill-opacity="0.7"/>
+          <circle cx="460" cy="190" r="17" fill="#141416" stroke="#e8632a" stroke-width="1" stroke-opacity="0.8"/><circle cx="460" cy="190" r="6" fill="#e8632a" fill-opacity="0.7"/>
+          <circle cx="115" cy="280" r="11" fill="#141416" stroke="#e8632a" stroke-width="0.8" stroke-opacity="0.5"/>
+          <circle cx="245" cy="280" r="11" fill="#141416" stroke="#e8632a" stroke-width="0.8" stroke-opacity="0.5"/>
+          <circle cx="395" cy="280" r="11" fill="#141416" stroke="#e8632a" stroke-width="0.8" stroke-opacity="0.5"/>
+          <circle cx="525" cy="280" r="11" fill="#141416" stroke="#e8632a" stroke-width="0.8" stroke-opacity="0.5"/>
+          <circle cx="320" cy="95" r="34" fill="none" stroke="#e8632a" stroke-width="0.5" stroke-opacity="0.2"/>
+          <circle cx="320" cy="95" r="46" fill="none" stroke="#e8632a" stroke-width="0.3" stroke-opacity="0.1"/>
+          <text x="28" y="344" fill="#e8632a" fill-opacity="0.35" font-family="monospace" font-size="9" letter-spacing="2">RESOURCE MANAGEMENT · ANGULAR + KOTLIN + AZURE</text>
+        </svg>
+        <div class="proj-thumb-overlay"></div><div class="proj-num-badge">01</div>
       </div>
-      <div class="project-role">Full-stack Developer</div>
-    </div>
- 
-    <div class="project-item">
-      <div class="project-num">02</div>
-      <div class="project-content">
-        <h3>
-          <span data-en>Business Analytics Dashboard</span>
-          <span data-de>Business-Analytics-Dashboard</span>
-        </h3>
-        <div class="project-client">
-          <span data-en>Global Consumer Goods Enterprise</span>
-          <span data-de>Globales Konsumgüterunternehmen</span>
-        </div>
-        <p class="project-desc" data-en>Customizable reporting dashboard consolidating data from multiple sources via APIs, enabling business stakeholders to generate dynamic reports with real-time data visualization. Deployed on Azure cloud with full DevOps pipelines.</p>
-        <p class="project-desc" data-de>Anpassbares Reporting-Dashboard, das Daten aus verschiedenen Quellen über APIs bündelt. Ermöglicht dynamische Berichte mit Echtzeit-Datenvisualisierung. Deployment auf Azure mit vollständiger DevOps-Pipeline.</p>
-        <div class="project-tech">
-          <span class="tech-chip">Vue.js</span><span class="tech-chip">Python</span>
-          <span class="tech-chip">Flask</span><span class="tech-chip">TypeScript</span>
-          <span class="tech-chip">Azure Power Platform</span><span class="tech-chip">Azure DevOps</span>
-        </div>
+      <div class="proj-body">
+        <div class="proj-client"><span data-en>European Aerospace Sector</span><span data-de>Europäische Luft- und Raumfahrtbranche</span></div>
+        <h3><span data-en>Resource Management Platform</span><span data-de>Ressourcenverwaltungsplattform</span></h3>
+        <p class="proj-desc" data-en>Central system used across multiple European countries to plan personnel distribution, workload allocation, and generate executive management reports.</p>
+        <p class="proj-desc" data-de>Zentrales System in mehreren europäischen Ländern zur Personalverteilung, Auslastungsplanung und Erstellung von Management-Berichten.</p>
+        <div class="proj-footer"><div class="proj-tech"><span class="tech-chip">Kotlin</span><span class="tech-chip">Spring Boot</span><span class="tech-chip">Angular</span><span class="tech-chip">MariaDB</span><span class="tech-chip">Azure</span></div><div class="proj-role">Full-stack</div></div>
       </div>
-      <div class="project-role">Full-stack Developer</div>
     </div>
- 
-    <div class="project-item">
-      <div class="project-num">03</div>
-      <div class="project-content">
-        <h3>
-          <span data-en>Industrial IoT Monitoring Platform</span>
-          <span data-de>Industrielle IoT-Überwachungsplattform</span>
-        </h3>
-        <div class="project-client">
-          <span data-en>Safety Technology Leader</span>
-          <span data-de>Führendes Sicherheitstechnologieunternehmen</span>
-        </div>
-        <p class="project-desc" data-en>Frontend for a Kubernetes cloud application enabling real-time monitoring of gas detectors and workers in industrial plants. Serverless Azure Functions architecture for scalable, event-driven data processing and critical safety alerts.</p>
-        <p class="project-desc" data-de>Frontend einer Kubernetes-Cloud-Anwendung zur Echtzeit-Überwachung von Gasdetektoren und Arbeitern in Industrieanlagen. Serverlose Azure-Functions-Architektur für skalierbare, ereignisgesteuerte Datenverarbeitung und Sicherheitswarnungen.</p>
-        <div class="project-tech">
-          <span class="tech-chip">Angular</span><span class="tech-chip">TypeScript</span>
-          <span class="tech-chip">Azure Functions</span><span class="tech-chip">Kubernetes</span>
-          <span class="tech-chip">.NET</span><span class="tech-chip">Serverless</span>
-        </div>
+
+    <!-- 02 -->
+    <div class="project-card">
+      <div class="proj-thumb-wrap">
+        <svg class="proj-thumb" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="360" fill="#0d0d0f"/>
+          <g stroke="#1a1a1e" stroke-width="0.5"><line x1="60" y1="55" x2="60" y2="305"/><line x1="60" y1="305" x2="610" y2="305"/><line x1="60" y1="255" x2="610" y2="255"/><line x1="60" y1="205" x2="610" y2="205"/><line x1="60" y1="155" x2="610" y2="155"/><line x1="60" y1="105" x2="610" y2="105"/><line x1="60" y1="55" x2="610" y2="55"/></g>
+          <rect x="90" y="220" width="55" height="85" fill="#e8632a" fill-opacity="0.12" rx="2"/>
+          <rect x="175" y="175" width="55" height="130" fill="#e8632a" fill-opacity="0.2" rx="2"/>
+          <rect x="260" y="140" width="55" height="165" fill="#e8632a" fill-opacity="0.3" rx="2"/>
+          <rect x="345" y="170" width="55" height="135" fill="#e8632a" fill-opacity="0.2" rx="2"/>
+          <rect x="430" y="110" width="55" height="195" fill="#e8632a" fill-opacity="0.42" rx="2"/>
+          <rect x="515" y="145" width="55" height="160" fill="#e8632a" fill-opacity="0.25" rx="2"/>
+          <polyline points="117,220 202,175 287,140 372,170 457,110 542,145" fill="none" stroke="#f59e4a" stroke-width="1.8" stroke-opacity="0.85"/>
+          <circle cx="117" cy="220" r="4" fill="#f59e4a"/><circle cx="202" cy="175" r="4" fill="#f59e4a"/><circle cx="287" cy="140" r="4" fill="#f59e4a"/><circle cx="372" cy="170" r="4" fill="#f59e4a"/>
+          <circle cx="457" cy="110" r="6" fill="#e8632a" stroke="#f59e4a" stroke-width="1.5"/>
+          <circle cx="542" cy="145" r="4" fill="#f59e4a"/>
+          <g font-family="monospace" font-size="8" fill="#2a2a2e"><text x="46" y="308">0</text><text x="40" y="258">25</text><text x="40" y="208">50</text><text x="40" y="158">75</text><text x="33" y="58">100</text></g>
+          <text x="28" y="344" fill="#e8632a" fill-opacity="0.35" font-family="monospace" font-size="9" letter-spacing="2">ANALYTICS DASHBOARD · VUE.JS + PYTHON + AZURE CLOUD</text>
+        </svg>
+        <div class="proj-thumb-overlay"></div><div class="proj-num-badge">02</div>
       </div>
-      <div class="project-role">Frontend Developer</div>
-    </div>
- 
-    <div class="project-item">
-      <div class="project-num">04</div>
-      <div class="project-content">
-        <h3>
-          <span data-en>Firmware Management Web Portal</span>
-          <span data-de>Firmware-Management-Webportal</span>
-        </h3>
-        <div class="project-client">
-          <span data-en>Renewable Energy Industry</span>
-          <span data-de>Erneuerbare-Energie-Branche</span>
-        </div>
-        <p class="project-desc" data-en>Angular-based web portal for managing and remotely updating firmware across solar energy system components. Full-stack development with Java backend, secure Keycloak authentication, and CI/CD pipelines in an agile Scrum team.</p>
-        <p class="project-desc" data-de>Angular-basiertes Webportal zur Verwaltung und Remote-Aktualisierung von Firmware in Solarenergieanlagen. Full-Stack-Entwicklung mit Java-Backend, sicherer Keycloak-Authentifizierung und CI/CD-Pipelines im agilen Scrum-Team.</p>
-        <div class="project-tech">
-          <span class="tech-chip">Angular</span><span class="tech-chip">RxJS</span>
-          <span class="tech-chip">TypeScript</span><span class="tech-chip">Java</span>
-          <span class="tech-chip">Keycloak</span><span class="tech-chip">Docker</span><span class="tech-chip">Jenkins</span>
-        </div>
+      <div class="proj-body">
+        <div class="proj-client"><span data-en>Global Consumer Goods Enterprise</span><span data-de>Globales Konsumgüterunternehmen</span></div>
+        <h3><span data-en>Business Analytics Dashboard</span><span data-de>Business-Analytics-Dashboard</span></h3>
+        <p class="proj-desc" data-en>Customizable reporting dashboard consolidating data from multiple APIs with real-time visualization. Deployed on Azure with full DevOps pipelines.</p>
+        <p class="proj-desc" data-de>Anpassbares Reporting-Dashboard mit Echtzeit-Datenvisualisierung aus mehreren API-Quellen. Deployment auf Azure mit vollständiger DevOps-Pipeline.</p>
+        <div class="proj-footer"><div class="proj-tech"><span class="tech-chip">Vue.js</span><span class="tech-chip">Python</span><span class="tech-chip">Flask</span><span class="tech-chip">Azure DevOps</span></div><div class="proj-role">Full-stack</div></div>
       </div>
-      <div class="project-role">Full-stack Engineer</div>
     </div>
- 
-    <div class="project-item">
-      <div class="project-num">05</div>
-      <div class="project-content">
-        <h3>
-          <span data-en>AI-Powered Framework Migration</span>
-          <span data-de>KI-gestützte Framework-Migration</span>
-        </h3>
-        <div class="project-client">
-          <span data-en>Internal Innovation Project</span>
-          <span data-de>Internes Innovationsprojekt</span>
-        </div>
-        <p class="project-desc" data-en>Pilot project using Large Language Models to automate UI framework migration from Vue 2 to Vue 3. Developed AI-assisted code transformation pipelines using OpenAI and GitHub Copilot, significantly reducing manual migration effort.</p>
-        <p class="project-desc" data-de>Pilotprojekt zum Einsatz von Large Language Models für die automatisierte UI-Framework-Migration von Vue 2 zu Vue 3. KI-gestützte Code-Transformations-Pipelines mit OpenAI und GitHub Copilot, die den manuellen Migrationsaufwand deutlich reduzierten.</p>
-        <div class="project-tech">
-          <span class="tech-chip">Python</span><span class="tech-chip">Vue.js</span>
-          <span class="tech-chip">OpenAI</span><span class="tech-chip">GitHub Copilot</span><span class="tech-chip">LLM</span>
-        </div>
+
+    <!-- 03 -->
+    <div class="project-card">
+      <div class="proj-thumb-wrap">
+        <svg class="proj-thumb" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="360" fill="#0d0d0f"/>
+          <g stroke="#e8632a" stroke-width="0.5" stroke-opacity="0.18" fill="none">
+            <line x1="110" y1="90" x2="230" y2="90"/><line x1="230" y1="90" x2="350" y2="90"/><line x1="350" y1="90" x2="470" y2="90"/>
+            <line x1="110" y1="90" x2="110" y2="180"/><line x1="230" y1="90" x2="230" y2="180"/><line x1="350" y1="90" x2="350" y2="180"/><line x1="470" y1="90" x2="470" y2="180"/>
+            <line x1="110" y1="180" x2="230" y2="180"/><line x1="230" y1="180" x2="350" y2="180"/><line x1="350" y1="180" x2="470" y2="180"/>
+            <line x1="110" y1="180" x2="110" y2="270"/><line x1="230" y1="180" x2="230" y2="270"/><line x1="350" y1="180" x2="350" y2="270"/><line x1="470" y1="180" x2="470" y2="270"/>
+            <line x1="110" y1="270" x2="230" y2="270"/><line x1="230" y1="270" x2="350" y2="270"/><line x1="350" y1="270" x2="470" y2="270"/>
+          </g>
+          <g fill="#141416" stroke="#e8632a" stroke-width="1">
+            <circle cx="110" cy="90" r="9"/><circle cx="230" cy="90" r="9"/><circle cx="350" cy="90" r="9"/><circle cx="470" cy="90" r="9"/>
+            <circle cx="110" cy="180" r="9"/><circle cx="230" cy="180" r="9"/><circle cx="350" cy="180" r="9"/><circle cx="470" cy="180" r="9"/>
+            <circle cx="110" cy="270" r="9"/><circle cx="230" cy="270" r="9"/><circle cx="350" cy="270" r="9"/><circle cx="470" cy="270" r="9"/>
+          </g>
+          <!-- alert node pulse -->
+          <circle cx="230" cy="180" r="19" fill="none" stroke="#e8632a" stroke-width="1.2" stroke-opacity="0.5"/>
+          <circle cx="230" cy="180" r="30" fill="none" stroke="#e8632a" stroke-width="0.7" stroke-opacity="0.25"/>
+          <circle cx="230" cy="180" r="5" fill="#e8632a"/>
+          <!-- active node -->
+          <circle cx="350" cy="90" r="5" fill="#f59e4a"/>
+          <circle cx="350" cy="90" r="16" fill="none" stroke="#f59e4a" stroke-width="0.8" stroke-opacity="0.45"/>
+          <!-- status bars right -->
+          <rect x="530" y="100" width="80" height="5" fill="#1e1e22" rx="2"/><rect x="530" y="100" width="55" height="5" fill="#e8632a" fill-opacity="0.55" rx="2"/>
+          <rect x="530" y="116" width="80" height="5" fill="#1e1e22" rx="2"/><rect x="530" y="116" width="68" height="5" fill="#e8632a" fill-opacity="0.4" rx="2"/>
+          <rect x="530" y="132" width="80" height="5" fill="#1e1e22" rx="2"/><rect x="530" y="132" width="38" height="5" fill="#f59e4a" fill-opacity="0.45" rx="2"/>
+          <text x="530" y="95" font-family="monospace" font-size="8" fill="#4a4a50">ZONES</text>
+          <text x="28" y="344" fill="#e8632a" fill-opacity="0.35" font-family="monospace" font-size="9" letter-spacing="2">IOT MONITORING · ANGULAR + AZURE FUNCTIONS + KUBERNETES</text>
+        </svg>
+        <div class="proj-thumb-overlay"></div><div class="proj-num-badge">03</div>
       </div>
-      <div class="project-role">Developer</div>
-    </div>
- 
-    <div class="project-item">
-      <div class="project-num">06</div>
-      <div class="project-content">
-        <h3>
-          <span data-en>Industrial Maintenance Platform</span>
-          <span data-de>Industrielle Wartungsplattform</span>
-        </h3>
-        <div class="project-client">
-          <span data-en>Manufacturing & Industry Sector</span>
-          <span data-de>Fertigungs- und Industriesektor</span>
-        </div>
-        <p class="project-desc" data-en>Full-stack platform simplifying maintenance workflows for industrial facilities. Responsible for frontend architecture enhancements, feature development, and bug fixing across a complex Angular and .NET Core stack.</p>
-        <p class="project-desc" data-de>Full-Stack-Plattform zur Vereinfachung von Wartungsprozessen in Industrieanlagen. Verantwortlich für Frontend-Architekturverbesserungen, Feature-Entwicklung und Fehlerbehebung im Angular- und .NET-Core-Stack.</p>
-        <div class="project-tech">
-          <span class="tech-chip">Angular</span><span class="tech-chip">.NET Core</span>
-          <span class="tech-chip">C#</span><span class="tech-chip">SQL Server</span>
-          <span class="tech-chip">TypeScript</span><span class="tech-chip">Entity Framework</span>
-        </div>
+      <div class="proj-body">
+        <div class="proj-client"><span data-en>Safety Technology Leader</span><span data-de>Führendes Sicherheitstechnologieunternehmen</span></div>
+        <h3><span data-en>Industrial IoT Monitoring Platform</span><span data-de>Industrielle IoT-Überwachungsplattform</span></h3>
+        <p class="proj-desc" data-en>Kubernetes cloud app for real-time monitoring of gas detectors and workers in industrial plants. Serverless Azure Functions for event-driven safety alerts.</p>
+        <p class="proj-desc" data-de>Kubernetes-App zur Echtzeit-Überwachung von Gasdetektoren in Industrieanlagen. Serverlose Azure Functions für ereignisgesteuerte Sicherheitswarnungen.</p>
+        <div class="proj-footer"><div class="proj-tech"><span class="tech-chip">Angular</span><span class="tech-chip">Azure Functions</span><span class="tech-chip">Kubernetes</span><span class="tech-chip">.NET</span></div><div class="proj-role">Frontend</div></div>
       </div>
-      <div class="project-role">Full-stack Developer</div>
     </div>
- 
+
+    <!-- 04 -->
+    <div class="project-card">
+      <div class="proj-thumb-wrap">
+        <svg class="proj-thumb" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="360" fill="#0d0d0f"/>
+          <rect x="55" y="45" width="530" height="270" rx="4" fill="#0f0f12" stroke="#1e1e22" stroke-width="1"/>
+          <rect x="55" y="45" width="530" height="30" rx="4" fill="#141418"/>
+          <rect x="55" y="59" width="530" height="16" fill="#141418"/>
+          <circle cx="78" cy="60" r="5" fill="#2a2a2e"/><circle cx="95" cy="60" r="5" fill="#2a2a2e"/><circle cx="112" cy="60" r="5" fill="#2a2a2e"/>
+          <rect x="138" y="52" width="105" height="18" rx="2" fill="#0a0a0c" stroke="#1e1e22" stroke-width="0.5"/>
+          <text x="145" y="65" font-family="monospace" font-size="8" fill="#4a4a50">firmware-update.ts</text>
+          <!-- line numbers -->
+          <g font-family="monospace" font-size="8" fill="#2a2a2e">
+            <text x="72" y="108">1</text><text x="72" y="124">2</text><text x="72" y="140">3</text><text x="72" y="156">4</text><text x="72" y="172">5</text><text x="72" y="188">6</text><text x="72" y="204">7</text>
+          </g>
+          <!-- code lines -->
+          <rect x="92" y="101" width="75" height="7" rx="1" fill="#2e2e32"/><rect x="174" y="101" width="50" height="7" rx="1" fill="#e8632a" fill-opacity="0.45"/><rect x="230" y="101" width="85" height="7" rx="1" fill="#2e2e32"/>
+          <rect x="100" y="117" width="115" height="7" rx="1" fill="#2e2e32"/>
+          <rect x="100" y="133" width="45" height="7" rx="1" fill="#f59e4a" fill-opacity="0.4"/><rect x="152" y="133" width="65" height="7" rx="1" fill="#2e2e32"/>
+          <rect x="100" y="149" width="190" height="7" rx="1" fill="#2e2e32"/>
+          <rect x="100" y="165" width="28" height="7" rx="1" fill="#e8632a" fill-opacity="0.5"/><rect x="134" y="165" width="130" height="7" rx="1" fill="#2e2e32"/>
+          <rect x="100" y="181" width="85" height="7" rx="1" fill="#2e2e32"/>
+          <rect x="100" y="197" width="155" height="7" rx="1" fill="#2e2e32"/>
+          <!-- right panel -->
+          <rect x="380" y="88" width="185" height="210" rx="3" fill="#0a0a0c" stroke="#1e1e22" stroke-width="0.8"/>
+          <text x="393" y="108" font-family="monospace" font-size="8" fill="#4a4a50">DEPLOYMENT STATUS</text>
+          <line x1="393" y1="114" x2="553" y2="114" stroke="#1e1e22" stroke-width="0.8"/>
+          <text x="393" y="132" font-family="monospace" font-size="7" fill="#4a4a50">Build</text>
+          <rect x="393" y="137" width="158" height="5" rx="2" fill="#1a1a1e"/><rect x="393" y="137" width="158" height="5" rx="2" fill="#e8632a" fill-opacity="0.65"/>
+          <text x="393" y="156" font-family="monospace" font-size="7" fill="#4a4a50">Tests</text>
+          <rect x="393" y="161" width="158" height="5" rx="2" fill="#1a1a1e"/><rect x="393" y="161" width="158" height="5" rx="2" fill="#e8632a" fill-opacity="0.65"/>
+          <text x="393" y="180" font-family="monospace" font-size="7" fill="#4a4a50">Deploy</text>
+          <rect x="393" y="185" width="158" height="5" rx="2" fill="#1a1a1e"/><rect x="393" y="185" width="108" height="5" rx="2" fill="#e8632a" fill-opacity="0.5"/>
+          <text x="393" y="204" font-family="monospace" font-size="7" fill="#4a4a50">Firmware v3.2.1</text>
+          <rect x="393" y="209" width="158" height="5" rx="2" fill="#1a1a1e"/><rect x="393" y="209" width="58" height="5" rx="2" fill="#f59e4a" fill-opacity="0.45"/>
+          <text x="28" y="344" fill="#e8632a" fill-opacity="0.35" font-family="monospace" font-size="9" letter-spacing="2">FIRMWARE PORTAL · ANGULAR + JAVA + KEYCLOAK + DOCKER</text>
+        </svg>
+        <div class="proj-thumb-overlay"></div><div class="proj-num-badge">04</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-client"><span data-en>Renewable Energy Industry</span><span data-de>Erneuerbare-Energie-Branche</span></div>
+        <h3><span data-en>Firmware Management Web Portal</span><span data-de>Firmware-Management-Webportal</span></h3>
+        <p class="proj-desc" data-en>Angular portal for remote firmware updates across solar system components. Java backend, Keycloak SSO, Jenkins CI/CD in an agile Scrum team.</p>
+        <p class="proj-desc" data-de>Angular-Portal für Remote-Firmware-Updates in Solarenergiesystemen. Java-Backend, Keycloak-SSO, Jenkins CI/CD im agilen Scrum-Team.</p>
+        <div class="proj-footer"><div class="proj-tech"><span class="tech-chip">Angular</span><span class="tech-chip">Java</span><span class="tech-chip">Keycloak</span><span class="tech-chip">Docker</span><span class="tech-chip">Jenkins</span></div><div class="proj-role">Full-stack</div></div>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="project-card">
+      <div class="proj-thumb-wrap">
+        <svg class="proj-thumb" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#e8632a" stroke-width="1.5"/></marker><marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M2 1L8 5L2 9" fill="none" stroke="#f59e4a" stroke-width="1.5"/></marker></defs>
+          <rect width="640" height="360" fill="#0d0d0f"/>
+          <!-- left nodes -->
+          <g fill="none" stroke="#e8632a" stroke-opacity="0.28" stroke-width="0.8">
+            <line x1="112" y1="88" x2="192" y2="135"/><line x1="112" y1="88" x2="192" y2="180"/><line x1="112" y1="180" x2="192" y2="135"/><line x1="112" y1="180" x2="192" y2="225"/><line x1="112" y1="272" x2="192" y2="180"/><line x1="112" y1="272" x2="192" y2="225"/>
+          </g>
+          <circle cx="112" cy="88" r="10" fill="#141416" stroke="#e8632a" stroke-width="1" stroke-opacity="0.5"/>
+          <circle cx="112" cy="180" r="10" fill="#141416" stroke="#e8632a" stroke-width="1" stroke-opacity="0.5"/>
+          <circle cx="112" cy="272" r="10" fill="#141416" stroke="#e8632a" stroke-width="1" stroke-opacity="0.5"/>
+          <circle cx="192" cy="135" r="10" fill="#141416" stroke="#e8632a" stroke-width="1" stroke-opacity="0.7"/>
+          <circle cx="192" cy="225" r="10" fill="#141416" stroke="#e8632a" stroke-width="1" stroke-opacity="0.7"/>
+          <!-- center LLM box -->
+          <rect x="245" y="128" width="150" height="104" rx="4" fill="#0f0f12" stroke="#e8632a" stroke-width="1.3"/>
+          <text x="278" y="168" font-family="monospace" font-size="12" fill="#e8632a" font-weight="600">LLM</text>
+          <text x="259" y="187" font-family="monospace" font-size="8" fill="#5a5a60">code transform</text>
+          <text x="263" y="202" font-family="monospace" font-size="8" fill="#5a5a60">Vue 2 → Vue 3</text>
+          <rect x="238" y="121" width="164" height="118" rx="6" fill="none" stroke="#e8632a" stroke-width="0.6" stroke-opacity="0.35"/>
+          <rect x="231" y="114" width="178" height="132" rx="8" fill="none" stroke="#e8632a" stroke-width="0.35" stroke-opacity="0.18"/>
+          <!-- arrows in/out -->
+          <line x1="213" y1="178" x2="242" y2="180" stroke="#e8632a" stroke-width="1" stroke-opacity="0.65" marker-end="url(#arr)"/>
+          <line x1="397" y1="180" x2="434" y2="180" stroke="#f59e4a" stroke-width="1" stroke-opacity="0.65" marker-end="url(#arr2)"/>
+          <!-- right nodes -->
+          <g fill="none" stroke="#f59e4a" stroke-opacity="0.35" stroke-width="0.8">
+            <line x1="448" y1="135" x2="528" y2="88"/><line x1="448" y1="135" x2="528" y2="180"/><line x1="448" y1="225" x2="528" y2="88"/><line x1="448" y1="225" x2="528" y2="180"/><line x1="448" y1="225" x2="528" y2="272"/>
+          </g>
+          <circle cx="528" cy="88" r="10" fill="#141416" stroke="#f59e4a" stroke-width="1" stroke-opacity="0.6"/>
+          <circle cx="528" cy="180" r="10" fill="#141416" stroke="#f59e4a" stroke-width="1" stroke-opacity="0.6"/>
+          <circle cx="528" cy="272" r="10" fill="#141416" stroke="#f59e4a" stroke-width="1" stroke-opacity="0.6"/>
+          <circle cx="448" cy="135" r="10" fill="#141416" stroke="#f59e4a" stroke-width="1" stroke-opacity="0.8"/>
+          <circle cx="448" cy="225" r="10" fill="#141416" stroke="#f59e4a" stroke-width="1" stroke-opacity="0.8"/>
+          <text x="88" y="318" font-family="monospace" font-size="8" fill="#e8632a" fill-opacity="0.45">Vue 2</text>
+          <text x="502" y="318" font-family="monospace" font-size="8" fill="#f59e4a" fill-opacity="0.45">Vue 3</text>
+          <text x="28" y="344" fill="#e8632a" fill-opacity="0.35" font-family="monospace" font-size="9" letter-spacing="2">AI MIGRATION · PYTHON + OPENAI + VUE.JS</text>
+        </svg>
+        <div class="proj-thumb-overlay"></div><div class="proj-num-badge">05</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-client"><span data-en>Internal Innovation Project</span><span data-de>Internes Innovationsprojekt</span></div>
+        <h3><span data-en>AI-Powered Framework Migration</span><span data-de>KI-gestützte Framework-Migration</span></h3>
+        <p class="proj-desc" data-en>Pilot using LLMs to automate UI migration from Vue 2 to Vue 3 via OpenAI and GitHub Copilot, significantly reducing manual effort.</p>
+        <p class="proj-desc" data-de>Pilotprojekt mit LLMs zur automatisierten UI-Migration von Vue 2 zu Vue 3 — deutliche Reduktion des manuellen Aufwands.</p>
+        <div class="proj-footer"><div class="proj-tech"><span class="tech-chip">Python</span><span class="tech-chip">Vue.js</span><span class="tech-chip">OpenAI</span><span class="tech-chip">LLM</span></div><div class="proj-role">Developer</div></div>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="project-card">
+      <div class="proj-thumb-wrap">
+        <svg class="proj-thumb" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg">
+          <rect width="640" height="360" fill="#0d0d0f"/>
+          <!-- horizontal rails -->
+          <line x1="75" y1="105" x2="565" y2="105" stroke="#1e1e22" stroke-width="1.5"/>
+          <line x1="75" y1="190" x2="565" y2="190" stroke="#1e1e22" stroke-width="1.5"/>
+          <line x1="75" y1="275" x2="565" y2="275" stroke="#1e1e22" stroke-width="1.5"/>
+          <!-- vertical drops -->
+          <g stroke="#e8632a" stroke-width="0.9" stroke-opacity="0.45" fill="none">
+            <line x1="145" y1="105" x2="145" y2="190"/><line x1="225" y1="105" x2="225" y2="190"/><line x1="305" y1="105" x2="305" y2="275"/>
+            <line x1="385" y1="190" x2="385" y2="275"/><line x1="465" y1="105" x2="465" y2="190"/><line x1="505" y1="190" x2="505" y2="275"/>
+          </g>
+          <!-- component blocks row 1 -->
+          <rect x="120" y="93" width="50" height="24" rx="2" fill="#0f0f12" stroke="#e8632a" stroke-width="1" stroke-opacity="0.65"/>
+          <text x="130" y="109" font-family="monospace" font-size="8" fill="#e8632a" fill-opacity="0.75">M-01</text>
+          <rect x="200" y="93" width="50" height="24" rx="2" fill="#0f0f12" stroke="#e8632a" stroke-width="1" stroke-opacity="0.65"/>
+          <text x="210" y="109" font-family="monospace" font-size="8" fill="#e8632a" fill-opacity="0.75">S-04</text>
+          <rect x="440" y="93" width="50" height="24" rx="2" fill="#0f0f12" stroke="#f59e4a" stroke-width="1" stroke-opacity="0.85"/>
+          <text x="448" y="109" font-family="monospace" font-size="8" fill="#f59e4a" fill-opacity="0.9">P-02</text>
+          <!-- component blocks row 2 -->
+          <rect x="280" y="178" width="50" height="24" rx="2" fill="#0f0f12" stroke="#e8632a" stroke-width="1"/>
+          <text x="288" y="194" font-family="monospace" font-size="8" fill="#e8632a" fill-opacity="0.75">C-07</text>
+          <rect x="360" y="178" width="50" height="24" rx="2" fill="#0f0f12" stroke="#e8632a" stroke-width="0.8" stroke-opacity="0.4"/>
+          <text x="368" y="194" font-family="monospace" font-size="8" fill="#e8632a" fill-opacity="0.5">V-11</text>
+          <rect x="480" y="178" width="50" height="24" rx="2" fill="#0f0f12" stroke="#e8632a" stroke-width="0.8" stroke-opacity="0.4"/>
+          <text x="488" y="194" font-family="monospace" font-size="8" fill="#e8632a" fill-opacity="0.5">T-03</text>
+          <!-- status dots -->
+          <circle cx="161" cy="105" r="3" fill="#e8632a"/><circle cx="241" cy="105" r="3" fill="#e8632a"/>
+          <circle cx="461" cy="105" r="3" fill="#f59e4a"/><circle cx="296" cy="190" r="3" fill="#e8632a"/>
+          <!-- alert pulse on P-02 -->
+          <rect x="433" y="86" width="64" height="38" rx="3" fill="none" stroke="#f59e4a" stroke-width="0.9" stroke-opacity="0.55"/>
+          <rect x="426" y="79" width="78" height="52" rx="5" fill="none" stroke="#f59e4a" stroke-width="0.5" stroke-opacity="0.28"/>
+          <text x="28" y="344" fill="#e8632a" fill-opacity="0.35" font-family="monospace" font-size="9" letter-spacing="2">MAINTENANCE PLATFORM · ANGULAR + .NET CORE + SQL SERVER</text>
+        </svg>
+        <div class="proj-thumb-overlay"></div><div class="proj-num-badge">06</div>
+      </div>
+      <div class="proj-body">
+        <div class="proj-client"><span data-en>Manufacturing & Industry Sector</span><span data-de>Fertigungs- und Industriesektor</span></div>
+        <h3><span data-en>Industrial Maintenance Platform</span><span data-de>Industrielle Wartungsplattform</span></h3>
+        <p class="proj-desc" data-en>Full-stack platform simplifying maintenance workflows for industrial facilities. Angular frontend, .NET Core backend, Entity Framework with SQL Server.</p>
+        <p class="proj-desc" data-de>Full-Stack-Plattform zur Vereinfachung industrieller Wartungsprozesse. Angular-Frontend, .NET-Core-Backend, Entity Framework mit SQL Server.</p>
+        <div class="proj-footer"><div class="proj-tech"><span class="tech-chip">Angular</span><span class="tech-chip">.NET Core</span><span class="tech-chip">C#</span><span class="tech-chip">SQL Server</span><span class="tech-chip">EF</span></div><div class="proj-role">Full-stack</div></div>
+      </div>
+    </div>
+
   </div>
 </section>
- 
-<!-- EXPERIENCE -->
+
 <section id="experience">
-  <div class="section-tag">
-    <span data-en>Career</span><span data-de>Karriere</span>
-  </div>
-  <h2>
-    <span data-en>Professional <em>Experience</em></span>
-    <span data-de>Berufliche <em>Erfahrung</em></span>
-  </h2>
+  <div class="section-tag"><span data-en>Career</span><span data-de>Karriere</span></div>
+  <h2><span data-en>Professional <em>Experience</em></span><span data-de>Berufliche <em>Erfahrung</em></span></h2>
   <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-period">2022 — <span data-en>Present</span><span data-de>Heute</span></div>
-      <div class="timeline-role">Senior Software Engineer</div>
-      <div class="timeline-company">MaibornWolff GmbH · Hamburg</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-period">2020 — 2022</div>
-      <div class="timeline-role">Software Engineer</div>
-      <div class="timeline-company">MaibornWolff GmbH · Hamburg</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-period">2017 — 2020</div>
-      <div class="timeline-role">IT Consultant</div>
-      <div class="timeline-company">evodion IT Technologies GmbH · Hamburg</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-period">2010 — 2015</div>
-      <div class="timeline-role">
-        <span data-en>B.Eng. Informatics Engineering</span>
-        <span data-de>B.Eng. Informatik-Ingenieurwesen</span>
-      </div>
-      <div class="timeline-company">
-        <span data-en>University of Aleppo · Syria</span>
-        <span data-de>Universität Aleppo · Syrien</span>
-      </div>
-    </div>
+    <div class="timeline-item"><div class="timeline-period">2022 — <span data-en>Present</span><span data-de>Heute</span></div><div class="timeline-role">Senior Software Engineer</div><div class="timeline-company">MaibornWolff GmbH · Hamburg</div></div>
+    <div class="timeline-item"><div class="timeline-period">2020 — 2022</div><div class="timeline-role">Software Engineer</div><div class="timeline-company">MaibornWolff GmbH · Hamburg</div></div>
+    <div class="timeline-item"><div class="timeline-period">2017 — 2020</div><div class="timeline-role">IT Consultant</div><div class="timeline-company">evodion IT Technologies GmbH · Hamburg</div></div>
+    <div class="timeline-item"><div class="timeline-period">2010 — 2015</div><div class="timeline-role"><span data-en>B.Eng. Informatics Engineering</span><span data-de>B.Eng. Informatik-Ingenieurwesen</span></div><div class="timeline-company"><span data-en>University of Aleppo · Syria</span><span data-de>Universität Aleppo · Syrien</span></div></div>
   </div>
- 
-  <div class="section-tag" style="margin-top:3.5rem">
-    <span data-en>Certifications</span><span data-de>Zertifizierungen</span>
-  </div>
+  <div class="section-tag" style="margin-top:3.5rem"><span data-en>Certifications</span><span data-de>Zertifizierungen</span></div>
   <div class="certs-grid" style="margin-top:1rem">
-    <div class="cert-item">
-      <div class="cert-icon">☁️</div>
-      <div>
-        <div class="cert-name">Microsoft Certified: Azure Developer Associate</div>
-        <div class="cert-date">AZ-204 · July 2025</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">⚙️</div>
-      <div>
-        <div class="cert-name">Professional Scrum Developer I (PSD I)</div>
-        <div class="cert-date">Scrum.org · January 2025</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">🏗️</div>
-      <div>
-        <div class="cert-name">iSAQB® Certified: Software Architecture Foundation</div>
-        <div class="cert-date">November 2023</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">🤖</div>
-      <div>
-        <div class="cert-name">Microsoft Certified: Azure AI Fundamentals</div>
-        <div class="cert-date">AI-900 · Microsoft</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">🔷</div>
-      <div>
-        <div class="cert-name">Microsoft Certified: Azure Fundamentals</div>
-        <div class="cert-date">AZ-900 · Microsoft</div>
-      </div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">⚖️</div>
-      <div>
-        <div class="cert-name">
-          <span data-en>Authorized: Title 'Ingenieur' (Germany)</span>
-          <span data-de>Berechtigung: Titel 'Ingenieur' (Deutschland)</span>
-        </div>
-        <div class="cert-date">January 2017</div>
-      </div>
-    </div>
+    <div class="cert-item"><div class="cert-icon">☁️</div><div><div class="cert-name">Microsoft Certified: Azure Developer Associate</div><div class="cert-date">AZ-204 · July 2025</div></div></div>
+    <div class="cert-item"><div class="cert-icon">⚙️</div><div><div class="cert-name">Professional Scrum Developer I (PSD I)</div><div class="cert-date">Scrum.org · January 2025</div></div></div>
+    <div class="cert-item"><div class="cert-icon">🏗️</div><div><div class="cert-name">iSAQB® Certified: Software Architecture Foundation</div><div class="cert-date">November 2023</div></div></div>
+    <div class="cert-item"><div class="cert-icon">🤖</div><div><div class="cert-name">Microsoft Certified: Azure AI Fundamentals</div><div class="cert-date">AI-900 · Microsoft</div></div></div>
+    <div class="cert-item"><div class="cert-icon">🔷</div><div><div class="cert-name">Microsoft Certified: Azure Fundamentals</div><div class="cert-date">AZ-900 · Microsoft</div></div></div>
+    <div class="cert-item"><div class="cert-icon">⚖️</div><div><div class="cert-name"><span data-en>Authorized: Title 'Ingenieur' (Germany)</span><span data-de>Berechtigung: Titel 'Ingenieur' (Deutschland)</span></div><div class="cert-date">January 2017</div></div></div>
   </div>
 </section>
- 
-<!-- CONTACT -->
+
 <section id="contact" class="contact-section">
   <div class="contact-grid">
     <div class="contact-left">
-      <div class="section-tag">
-        <span data-en>Contact</span><span data-de>Kontakt</span>
-      </div>
-      <h2>
-        <span data-en>Let's work <em>together</em></span>
-        <span data-de>Lass uns <em>zusammenarbeiten</em></span>
-      </h2>
+      <div class="section-tag"><span data-en>Contact</span><span data-de>Kontakt</span></div>
+      <h2><span data-en>Let's work <em>together</em></span><span data-de>Lass uns <em>zusammenarbeiten</em></span></h2>
       <p data-en>Available for freelance projects, consulting, and short-term contracts. Based in Hamburg — working remotely across Europe.</p>
       <p data-de>Verfügbar für Freelance-Projekte, Beratung und kurzfristige Aufträge. Ansässig in Hamburg — arbeite remote in ganz Europa.</p>
-      <div class="available-badge" style="margin-top:0.5rem">
-        <span class="available-dot"></span>
-        <span data-en>Open to new projects</span>
-        <span data-de>Offen für neue Projekte</span>
-      </div>
+      <div class="available-badge" style="margin-top:.5rem"><span class="available-dot"></span><span data-en>Open to new projects</span><span data-de>Offen für neue Projekte</span></div>
     </div>
     <div>
       <div class="contact-links">
-        <a href="mailto:rezgar91@gmail.com" class="contact-link">
-          <span class="contact-link-icon">✉</span>rezgar91@gmail.com
-        </a>
-        <a href="tel:+4917621574658" class="contact-link">
-          <span class="contact-link-icon">✆</span>+49 176 21574658
-        </a>
-        <a href="https://rezgar-muhammad.de" class="contact-link">
-          <span class="contact-link-icon">◈</span>rezgar-muhammad.de
-        </a>
-        <a href="https://linkedin.com" target="_blank" class="contact-link">
-          <span class="contact-link-icon">in</span>LinkedIn
-        </a>
-        <a href="https://xing.com" target="_blank" class="contact-link">
-          <span class="contact-link-icon">✕</span>XING
-        </a>
+        <a href="mailto:rezgar91@gmail.com" class="contact-link"><span class="contact-link-icon">✉</span>rezgar91@gmail.com</a>
+        <a href="tel:+4917621574658" class="contact-link"><span class="contact-link-icon">✆</span>+49 176 21574658</a>
+        <a href="https://rezgar-muhammad.de" class="contact-link"><span class="contact-link-icon">◈</span>rezgar-muhammad.de</a>
+        <a href="https://linkedin.com/in/YOUR-HANDLE" target="_blank" class="contact-link"><span class="contact-link-icon">in</span>LinkedIn</a>
+        <a href="https://xing.com/profile/YOUR-HANDLE" target="_blank" class="contact-link"><span class="contact-link-icon">✕</span>XING</a>
       </div>
     </div>
   </div>
 </section>
- 
+
 <footer>
   <div class="footer-copy">© 2026 Rezgar Muhammad</div>
   <div class="footer-location">Hamburg, Germany</div>
 </footer>
- 
+
 <script>
-  // Language switch
-  function setLang(lang) {
-    document.body.classList.remove('lang-en','lang-de');
-    document.body.classList.add('lang-' + lang);
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-    document.documentElement.lang = lang;
-    localStorage.setItem('lang', lang);
-  }
- 
-  // Restore saved language
-  const saved = localStorage.getItem('lang');
-  if (saved) setLang(saved);
- 
-  // Scroll animations
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
- 
-  document.querySelectorAll('section:not(.hero) h2, .skills-grid, .projects-list, .timeline, .certs-grid, .contact-grid').forEach(el => {
-    el.style.cssText = 'opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease';
-    obs.observe(el);
-  });
- 
-  const projObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const n = parseInt(e.target.querySelector('.project-num')?.textContent || '1');
-        setTimeout(() => {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateX(0)';
-        }, (n - 1) * 80);
-        projObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.05 });
- 
-  document.querySelectorAll('.project-item').forEach(el => {
-    el.style.cssText = 'opacity:0;transform:translateX(-18px);transition:opacity 0.55s ease,transform 0.55s ease';
-    projObs.observe(el);
-  });
+  function setLang(lang){document.body.classList.remove('lang-en','lang-de');document.body.classList.add('lang-'+lang);document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');document.documentElement.lang=lang;localStorage.setItem('lang',lang)}
+  const saved=localStorage.getItem('lang');if(saved)setLang(saved);
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';obs.unobserve(e.target)}})},{threshold:.08});
+  document.querySelectorAll('section:not(.hero) h2,.skills-grid,.projects-grid,.timeline,.certs-grid,.contact-grid').forEach(el=>{el.style.cssText='opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease';obs.observe(el)});
+  const cardObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const idx=Array.from(document.querySelectorAll('.project-card')).indexOf(e.target);setTimeout(()=>{e.target.style.opacity='1';e.target.style.transform='translateY(0)'},idx*90);cardObs.unobserve(e.target)}})},{threshold:.05});
+  document.querySelectorAll('.project-card').forEach(el=>{el.style.cssText='opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease';cardObs.observe(el)});
 </script>
 </body>
 </html>
