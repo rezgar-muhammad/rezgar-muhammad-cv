@@ -1,216 +1,874 @@
-<!DOCTYPE html>
-<html lang="de" class="scroll-smooth">
-
+!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Interaktiver Lebenslauf - Rezgar Muhammad</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f5f5f4;
-            /* stone-100 */
-            color: #374151;
-            /* gray-700 */
-        }
-
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 450px;
-            max-height: 60vh;
-        }
-
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 500px;
-            }
-        }
-
-        .timeline-item-content.is-hidden {
-            display: none;
-        }
-
-        .expand-icon {
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .expand-icon.rotate-180 {
-            transform: rotate(180deg);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rezgar Muhammad — Senior Software Engineer, Hamburg. Angular, Azure, Full-Stack.">
+<meta name="keywords" content="Angular Developer, Azure, Full-Stack, Hamburg, Freelance, Software Engineer">
+<meta property="og:title" content="Rezgar Muhammad — Senior Software Engineer">
+<meta property="og:description" content="Full-stack engineer specializing in Angular & Azure. Based in Hamburg.">
+<meta property="og:url" content="https://rezgar-muhammad.de">
+<title>Rezgar Muhammad — Senior Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --bg2: #111113;
+    --bg3: #18181b;
+    --accent: #e8632a;
+    --accent2: #f59e4a;
+    --text: #e8e6e1;
+    --muted: #6b6b70;
+    --border: #222226;
+    --card: #141416;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+ 
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(10,10,11,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+  .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+ 
+  /* LANGUAGE TOGGLE */
+  .lang-toggle {
+    display: flex;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .lang-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    padding: 0.4rem 0.85rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    transition: all 0.2s;
+    text-transform: uppercase;
+  }
+  .lang-btn.active {
+    background: var(--accent);
+    color: #fff;
+  }
+  .lang-btn:hover:not(.active) { color: var(--text); }
+ 
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 4rem;
+    padding-top: 90px;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 4rem;
+    padding-bottom: 4rem;
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-tag::before { content: ''; width: 2rem; height: 1px; background: var(--accent); }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+    line-height: 1.02;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .hero-desc { font-size: 1rem; color: var(--muted); max-width: 420px; margin-bottom: 2.5rem; line-height: 1.85; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.25s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.25s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-right { display: flex; align-items: center; justify-content: center; }
+  .hero-stats {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    width: 100%;
+    max-width: 320px;
+  }
+  .stat-box { background: var(--card); padding: 2rem; transition: background 0.2s; }
+  .stat-box:hover { background: var(--bg3); }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 3.2rem; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
+  .available-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232,99,42,0.1);
+    border: 1px solid rgba(232,99,42,0.3);
+    padding: 0.35rem 0.9rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.66rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.75rem;
+    width: fit-content;
+  }
+  .available-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+ 
+  /* SECTIONS */
+  section { padding: 6rem 4rem; border-top: 1px solid var(--border); }
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-tag::before { content: ''; width: 2rem; height: 1px; background: var(--accent); }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.02em;
+  }
+  h2 em { font-style: italic; color: var(--accent); }
+ 
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .skill-group { background: var(--card); padding: 1.75rem; transition: background 0.2s; }
+  .skill-group:hover { background: var(--bg3); }
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .skill-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 0.28rem 0.7rem;
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+ 
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .project-item {
+    background: var(--card);
+    padding: 2.25rem 2.5rem;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+    transition: background 0.2s;
+  }
+  .project-item:hover { background: var(--bg3); }
+  .project-num { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); padding-top: 0.3rem; }
+  .project-content h3 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 0.25rem; }
+  .project-client { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.75rem; text-transform: uppercase; }
+  .project-desc { font-size: 0.88rem; color: var(--muted); max-width: 560px; line-height: 1.8; margin-bottom: 1rem; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tech-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.63rem;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 0.18rem 0.55rem;
+    transition: all 0.2s;
+  }
+  .project-item:hover .tech-chip { border-color: #2a2a2e; color: var(--text); }
+  .project-role { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); white-space: nowrap; padding-top: 0.3rem; text-align: right; }
+ 
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0; width: 1px; background: var(--border); }
+  .timeline-item { position: relative; padding-left: 2rem; padding-bottom: 2.5rem; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-item::before { content: ''; position: absolute; left: -1.5rem; top: 0.45rem; width: 7px; height: 7px; background: var(--accent); transform: rotate(45deg); }
+  .timeline-period { font-family: 'DM Mono', monospace; font-size: 0.66rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  .timeline-role { font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.2rem; }
+  .timeline-company { font-size: 0.85rem; color: var(--muted); }
+ 
+  /* CERTS */
+  .certs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+  .cert-item { background: var(--card); padding: 1.5rem 1.75rem; display: flex; align-items: flex-start; gap: 1rem; transition: background 0.2s; }
+  .cert-item:hover { background: var(--bg3); }
+  .cert-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .cert-name { font-size: 0.88rem; font-weight: 500; margin-bottom: 0.2rem; }
+  .cert-date { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--accent); letter-spacing: 0.08em; }
+ 
+  /* CONTACT */
+  .contact-section { background: var(--card); border-top: 1px solid var(--border); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .contact-left p { color: var(--muted); max-width: 380px; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; border: 1px solid var(--border); }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    transition: all 0.2s;
+    background: var(--bg);
+  }
+  .contact-link:last-child { border-bottom: none; }
+  .contact-link:hover { background: var(--bg3); color: var(--accent); padding-left: 2rem; }
+  .contact-link-icon { color: var(--accent); width: 1.25rem; text-align: center; flex-shrink: 0; }
+ 
+  /* FOOTER */
+  footer {
+    padding: 1.75rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
+  .footer-location { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
+  .footer-location::before { content: '◈'; color: var(--accent); }
+ 
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+ 
+  /* CURSOR BLINK */
+  .cursor-blink {
+    display: inline-block;
+    width: 3px; height: 0.8em;
+    background: var(--accent);
+    margin-left: 3px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+ 
+  /* ANIMATIONS */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+  .fade-up { opacity:0; animation: fadeUp 0.75s ease forwards; }
+  .d1{animation-delay:0.1s} .d2{animation-delay:0.25s} .d3{animation-delay:0.4s} .d4{animation-delay:0.55s}
+ 
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    nav{padding:1.2rem 1.5rem}
+    .nav-links{display:none}
+    .hero{grid-template-columns:1fr;padding:0 1.5rem;padding-top:80px}
+    .hero-left{padding-right:0;padding-bottom:3rem}
+    .hero-right{justify-content:flex-start;margin-bottom:4rem}
+    .hero-stats{max-width:100%}
+    section{padding:4rem 1.5rem}
+    .skills-grid{grid-template-columns:1fr}
+    .project-item{grid-template-columns:2rem 1fr}
+    .project-role{display:none}
+    .certs-grid{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+    footer{flex-direction:column;gap:1rem;padding:1.5rem;text-align:center}
+  }
+ 
+  /* [de] hidden by default */
+  [data-de] { display: none; }
+  body.lang-de [data-en] { display: none; }
+  body.lang-de [data-de] { display: revert; }
+</style>
 </head>
-
-<body class="antialiased">
-
-    <header class="bg-stone-200/80 backdrop-blur-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div>
-                <h1 class="text-2xl md:text-3xl font-bold text-slate-800">Rezgar Muhammad</h1>
-                <p class="text-md text-slate-600" data-lang-key="role"></p>
-            </div>
-            <div class="flex items-center space-x-4">
-                <!-- Desktop Nav -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#experience"
-                        class="nav-link text-slate-700 hover:text-slate-900 font-medium transition-colors"
-                        data-lang-key="nav_experience"></a>
-                    <a href="#skills" class="nav-link text-slate-700 hover:text-slate-900 font-medium transition-colors"
-                        data-lang-key="nav_skills"></a>
-                    <a href="#certifications" class="nav-link text-slate-700 hover:text-slate-900 font-medium transition-colors"
-                        data-lang-key="certifications_title"></a>
-                    <a href="#education" class="nav-link text-slate-700 hover:text-slate-900 font-medium transition-colors"
-                        data-lang-key="education_title"></a>
-                    <a href="#others" class="nav-link text-slate-700 hover:text-slate-900 font-medium transition-colors"
-                        data-lang-key="others_title"></a>
-                    <div id="lang-toggle-button" class="cursor-pointer flex items-center space-x-1 pl-4" role="button"
-                        aria-label="Toggle language between German and English">
-                        <span id="flag-de" class="text-xl transition-opacity">🇩🇪</span>
-                        <span class="text-slate-400">/</span>
-                        <span id="flag-en" class="text-xl transition-opacity">🇬🇧</span>
-                    </div>
-                </div>
-                <!-- Mobile Nav Button -->
-                <button id="mobile-menu-button" class="md:hidden text-slate-700 hover:text-slate-900 transition-colors">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
-        </nav>
-        <!-- Mobile Nav Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-stone-100/90 w-full text-center py-4">
-            <a href="#experience" class="nav-link block py-2 text-slate-700 hover:text-slate-900 transition-colors"
-                data-lang-key="nav_experience"></a>
-            <a href="#skills" class="nav-link block py-2 text-slate-700 hover:text-slate-900 transition-colors"
-                data-lang-key="nav_skills"></a>
-            <a href="#certifications" class="nav-link block py-2 text-slate-700 hover:text-slate-900 transition-colors"
-                data-lang-key="certifications_title"></a>
-            <a href="#education" class="nav-link block py-2 text-slate-700 hover:text-slate-900 transition-colors"
-                data-lang-key="education_title"></a>
-            <a href="#others" class="nav-link block py-2 text-slate-700 hover:text-slate-900 transition-colors"
-                data-lang-key="others_title"></a>
-            <div id="lang-toggle-button-mobile" class="cursor-pointer flex items-center justify-center space-x-2 pt-4">
-                <span id="flag-de-mobile" class="text-xl transition-opacity">🇩🇪</span>
-                <span class="text-slate-400">/</span>
-                <span id="flag-en-mobile" class="text-xl transition-opacity">🇬🇧</span>
-            </div>
+<body class="lang-en">
+ 
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">RM.dev</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#skills" data-en>Skills</a><a href="#skills" data-de>Kenntnisse</a></li>
+      <li><a href="#projects" data-en>Projects</a><a href="#projects" data-de>Projekte</a></li>
+      <li><a href="#experience" data-en>Experience</a><a href="#experience" data-de>Erfahrung</a></li>
+      <li><a href="#contact" data-en>Contact</a><a href="#contact" data-de>Kontakt</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('de')">DE</button>
+    </div>
+  </div>
+</nav>
+ 
+<!-- HERO -->
+<section class="hero" style="border-top:none">
+  <div class="hero-left">
+    <div class="available-badge fade-up d1">
+      <span class="available-dot"></span>
+      <span data-en>Available for freelance projects</span>
+      <span data-de>Verfügbar für Freelance-Projekte</span>
+    </div>
+    <div class="hero-tag fade-up d1">
+      <span data-en>Senior Software Engineer</span>
+      <span data-de>Senior Software Engineer</span>
+    </div>
+    <h1 class="fade-up d2">Rezgar<br><em>Muhammad</em><span class="cursor-blink"></span></h1>
+    <p class="hero-desc fade-up d3" data-en>
+      Full-stack engineer specializing in Angular, Azure cloud architecture, and scalable enterprise applications.
+      Based in Hamburg — delivering production-grade solutions since 2017.
+    </p>
+    <p class="hero-desc fade-up d3" data-de>
+      Full-Stack-Entwickler mit Spezialisierung auf Angular, Azure-Cloud-Architektur und skalierbare Unternehmensanwendungen.
+      Ansässig in Hamburg — liefere produktionsreife Lösungen seit 2017.
+    </p>
+    <div class="hero-ctas fade-up d4">
+      <a href="#projects" class="btn-primary">
+        <span data-en>View Projects →</span>
+        <span data-de>Projekte ansehen →</span>
+      </a>
+      <a href="#contact" class="btn-secondary">
+        <span data-en>Get in Touch</span>
+        <span data-de>Kontakt aufnehmen</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-right fade-up d3">
+    <div class="hero-stats">
+      <div class="stat-box">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">
+          <span data-en>Years of Experience</span>
+          <span data-de>Jahre Erfahrung</span>
         </div>
-    </header>
-
-    <main class="container mx-auto p-6 md:p-12">
-        <section id="about" class="mb-16">
-            <div class="bg-white rounded-lg shadow-sm p-6 md:p-8 max-w-4xl mx-auto">
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4" data-lang-key="profile_title"></h2>
-                <p class="text-md md:text-lg text-slate-600 leading-relaxed" data-lang-key="profile_summary"></p>
-            </div>
-        </section>
-
-        <section id="experience" class="mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center" data-lang-key="experience_title">
-            </h2>
-            <div class="relative max-w-4xl mx-auto">
-                <!-- Mobile & Tablet timeline line -->
-                <div class="absolute left-6 md:hidden h-full w-0.5 bg-slate-300"></div>
-                <!-- Desktop timeline line -->
-                <div class="absolute hidden md:block left-1/2 -translate-x-1/2 h-full w-0.5 bg-slate-300"></div>
-                <div id="timeline-container" class="space-y-12">
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4 text-center" data-lang-key="skills_title">
-            </h2>
-            <p class="text-md md:text-lg text-slate-600 text-center mb-8 max-w-3xl mx-auto"
-                data-lang-key="skills_description"></p>
-            <div class="bg-white rounded-lg shadow-sm p-6">
-                <div class="chart-container">
-                    <canvas id="skillsChart"></canvas>
-                </div>
-            </div>
-        </section>
-
-        <section id="certifications" class="mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center"
-                data-lang-key="certifications_title"></h2>
-            <div id="certifications-container"
-                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            </div>
-        </section>
-
-        <section id="education" class="mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6 text-center" data-lang-key="education_title">
-            </h2>
-            <div class="bg-white rounded-lg shadow-sm p-6 md:p-8 max-w-4xl mx-auto">
-                <h3 class="text-xl font-bold text-slate-800" data-lang-key="education_degree"></h3>
-                <p class="text-md text-slate-500 mb-3" data-lang-key="education_period"></p>
-                <p class="text-slate-600"><span class="font-semibold"
-                        data-lang-key="education_thesis_label"></span><span
-                        data-lang-key="education_thesis_text"></span></p>
-            </div>
-        </section>
-
-        <section id="others" class="mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-8 text-center" data-lang-key="others_title">
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <!-- Languages Card -->
-                <div class="bg-white rounded-lg shadow-sm p-6 md:p-8">
-                    <h3 class="text-xl font-bold text-slate-800 mb-4" data-lang-key="languages_title"></h3>
-                    <ul id="languages-list" class="space-y-2 text-slate-700"></ul>
-                </div>
-
-                <!-- Hobbies Card -->
-                <div class="bg-white rounded-lg shadow-sm p-6 md:p-8">
-                    <h3 class="text-xl font-bold text-slate-800 mb-4" data-lang-key="hobbies_title"></h3>
-                    <ul id="hobbies-list" class="space-y-2 text-slate-700"></ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-6 text-center" data-lang-key="contact_title">
-            </h2>
-            <div class="bg-white rounded-lg shadow-sm p-6 md:p-8 max-w-4xl mx-auto text-center">
-                <ul class="space-y-4 text-md md:text-lg text-slate-700">
-                    <li><span class="font-semibold" data-lang-key="contact_email_label"></span> <a
-                            href="mailto:rezgar91@gmail.com"
-                            class="text-blue-600 hover:underline">rezgar91@gmail.com</a></li>
-                    <li><span class="font-semibold" data-lang-key="contact_phone_label"></span> <a
-                            href="tel:+4917621574658" class="text-blue-600 hover:underline">017621574658</a></li>
-                    <li><span class="font-semibold" data-lang-key="contact_location_label"></span> <span
-                            data-lang-key="contact_location_text"></span></li>
-                    <li><span class="font-semibold" data-lang-key="contact_xing_label"></span> <a
-                            href="https://www.xing.com/profile/Rezgar_Muhammad/portfolio" target="_blank"
-                            class="text-blue-600 hover:underline">Rezgar Muhammad</a></li>
-                    <li><span class="font-semibold" data-lang-key="contact_linkedin_label"></span> <a
-                            href="https://www.linkedin.com/in/rezgar-muhammad-9878b5a6/" target="_blank"
-                            class="text-blue-600 hover:underline">Rezgar Muhammad</a></li>
-                </ul>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-slate-800 text-stone-300 mt-16">
-        <div class="container mx-auto p-6 text-center">
-            <p data-lang-key="footer_text_1"></p>
-            <p class="text-sm mt-2" data-lang-key="footer_text_2"></p>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">6</div>
+        <div class="stat-label">
+          <span data-en>Enterprise Projects</span>
+          <span data-de>Unternehmensprojekte</span>
         </div>
-    </footer>
-
-    <!-- Import external JavaScript file -->
-    <script src="main.js"></script>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">5</div>
+        <div class="stat-label">
+          <span data-en>Certifications</span>
+          <span data-de>Zertifizierungen</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag">
+    <span data-en>Expertise</span><span data-de>Expertise</span>
+  </div>
+  <h2>
+    <span data-en>Technical <em>Skills</em></span>
+    <span data-de>Technische <em>Kenntnisse</em></span>
+  </h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Frontend</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Angular</span><span class="skill-tag">React</span>
+        <span class="skill-tag">Vue.js</span><span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">JavaScript</span><span class="skill-tag">RxJS</span>
+        <span class="skill-tag">NgRx</span><span class="skill-tag">GraphQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Backend</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Kotlin</span><span class="skill-tag">Spring Boot</span>
+        <span class="skill-tag">C# / .NET</span><span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Nest.js</span><span class="skill-tag">Python</span>
+        <span class="skill-tag">REST APIs</span><span class="skill-tag">MariaDB</span>
+        <span class="skill-tag">SQL Server</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Cloud & DevOps</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Azure</span><span class="skill-tag">Azure Functions</span>
+        <span class="skill-tag">Kubernetes</span><span class="skill-tag">Docker</span>
+        <span class="skill-tag">Azure DevOps</span><span class="skill-tag">Jenkins</span>
+        <span class="skill-tag">Serverless</span><span class="skill-tag">CI/CD</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">
+        <span data-en>Architecture</span><span data-de>Architektur</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Software Architecture</span>
+        <span class="skill-tag">Design Patterns</span>
+        <span class="skill-tag">iSAQB Certified</span>
+        <span class="skill-tag">Microservices</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">
+        <span data-en>Methods & Tools</span><span data-de>Methoden & Werkzeuge</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Scrum / Agile</span><span class="skill-tag">Jira</span>
+        <span class="skill-tag">Git</span><span class="skill-tag">Keycloak</span>
+        <span class="skill-tag">OpenAI / LLM</span><span class="skill-tag">Swagger</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">
+        <span data-en>Languages</span><span data-de>Sprachen</span>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag">Kurdish — <span data-en>Native</span><span data-de>Muttersprache</span></span>
+        <span class="skill-tag">Arabic — <span data-en>Native</span><span data-de>Muttersprache</span></span>
+        <span class="skill-tag">English — C1</span>
+        <span class="skill-tag">Deutsch — C1</span>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-tag">
+    <span data-en>Work</span><span data-de>Arbeit</span>
+  </div>
+  <h2>
+    <span data-en>Selected <em>Projects</em></span>
+    <span data-de>Ausgewählte <em>Projekte</em></span>
+  </h2>
+  <div class="projects-list">
+ 
+    <div class="project-item">
+      <div class="project-num">01</div>
+      <div class="project-content">
+        <h3>
+          <span data-en>Resource Management Platform</span>
+          <span data-de>Ressourcenverwaltungsplattform</span>
+        </h3>
+        <div class="project-client">
+          <span data-en>European Aerospace Sector</span>
+          <span data-de>Europäische Luft- und Raumfahrtbranche</span>
+        </div>
+        <p class="project-desc" data-en>Central resource management system used across multiple European countries to organize personnel distribution, workload planning, and manpower allocation. Generates executive reports and analytics dashboards for key management decisions.</p>
+        <p class="project-desc" data-de>Zentrales Ressourcenverwaltungssystem, das in mehreren europäischen Ländern eingesetzt wird, um die Personalverteilung, Auslastungsplanung und Ressourcenzuweisung zu organisieren. Erstellt Managementberichte und Analyse-Dashboards für wichtige Entscheidungen.</p>
+        <div class="project-tech">
+          <span class="tech-chip">Kotlin</span><span class="tech-chip">Spring Boot</span>
+          <span class="tech-chip">Angular</span><span class="tech-chip">MariaDB</span>
+          <span class="tech-chip">QueryDSL</span><span class="tech-chip">Azure</span>
+        </div>
+      </div>
+      <div class="project-role">Full-stack Developer</div>
+    </div>
+ 
+    <div class="project-item">
+      <div class="project-num">02</div>
+      <div class="project-content">
+        <h3>
+          <span data-en>Business Analytics Dashboard</span>
+          <span data-de>Business-Analytics-Dashboard</span>
+        </h3>
+        <div class="project-client">
+          <span data-en>Global Consumer Goods Enterprise</span>
+          <span data-de>Globales Konsumgüterunternehmen</span>
+        </div>
+        <p class="project-desc" data-en>Customizable reporting dashboard consolidating data from multiple sources via APIs, enabling business stakeholders to generate dynamic reports with real-time data visualization. Deployed on Azure cloud with full DevOps pipelines.</p>
+        <p class="project-desc" data-de>Anpassbares Reporting-Dashboard, das Daten aus verschiedenen Quellen über APIs bündelt. Ermöglicht dynamische Berichte mit Echtzeit-Datenvisualisierung. Deployment auf Azure mit vollständiger DevOps-Pipeline.</p>
+        <div class="project-tech">
+          <span class="tech-chip">Vue.js</span><span class="tech-chip">Python</span>
+          <span class="tech-chip">Flask</span><span class="tech-chip">TypeScript</span>
+          <span class="tech-chip">Azure Power Platform</span><span class="tech-chip">Azure DevOps</span>
+        </div>
+      </div>
+      <div class="project-role">Full-stack Developer</div>
+    </div>
+ 
+    <div class="project-item">
+      <div class="project-num">03</div>
+      <div class="project-content">
+        <h3>
+          <span data-en>Industrial IoT Monitoring Platform</span>
+          <span data-de>Industrielle IoT-Überwachungsplattform</span>
+        </h3>
+        <div class="project-client">
+          <span data-en>Safety Technology Leader</span>
+          <span data-de>Führendes Sicherheitstechnologieunternehmen</span>
+        </div>
+        <p class="project-desc" data-en>Frontend for a Kubernetes cloud application enabling real-time monitoring of gas detectors and workers in industrial plants. Serverless Azure Functions architecture for scalable, event-driven data processing and critical safety alerts.</p>
+        <p class="project-desc" data-de>Frontend einer Kubernetes-Cloud-Anwendung zur Echtzeit-Überwachung von Gasdetektoren und Arbeitern in Industrieanlagen. Serverlose Azure-Functions-Architektur für skalierbare, ereignisgesteuerte Datenverarbeitung und Sicherheitswarnungen.</p>
+        <div class="project-tech">
+          <span class="tech-chip">Angular</span><span class="tech-chip">TypeScript</span>
+          <span class="tech-chip">Azure Functions</span><span class="tech-chip">Kubernetes</span>
+          <span class="tech-chip">.NET</span><span class="tech-chip">Serverless</span>
+        </div>
+      </div>
+      <div class="project-role">Frontend Developer</div>
+    </div>
+ 
+    <div class="project-item">
+      <div class="project-num">04</div>
+      <div class="project-content">
+        <h3>
+          <span data-en>Firmware Management Web Portal</span>
+          <span data-de>Firmware-Management-Webportal</span>
+        </h3>
+        <div class="project-client">
+          <span data-en>Renewable Energy Industry</span>
+          <span data-de>Erneuerbare-Energie-Branche</span>
+        </div>
+        <p class="project-desc" data-en>Angular-based web portal for managing and remotely updating firmware across solar energy system components. Full-stack development with Java backend, secure Keycloak authentication, and CI/CD pipelines in an agile Scrum team.</p>
+        <p class="project-desc" data-de>Angular-basiertes Webportal zur Verwaltung und Remote-Aktualisierung von Firmware in Solarenergieanlagen. Full-Stack-Entwicklung mit Java-Backend, sicherer Keycloak-Authentifizierung und CI/CD-Pipelines im agilen Scrum-Team.</p>
+        <div class="project-tech">
+          <span class="tech-chip">Angular</span><span class="tech-chip">RxJS</span>
+          <span class="tech-chip">TypeScript</span><span class="tech-chip">Java</span>
+          <span class="tech-chip">Keycloak</span><span class="tech-chip">Docker</span><span class="tech-chip">Jenkins</span>
+        </div>
+      </div>
+      <div class="project-role">Full-stack Engineer</div>
+    </div>
+ 
+    <div class="project-item">
+      <div class="project-num">05</div>
+      <div class="project-content">
+        <h3>
+          <span data-en>AI-Powered Framework Migration</span>
+          <span data-de>KI-gestützte Framework-Migration</span>
+        </h3>
+        <div class="project-client">
+          <span data-en>Internal Innovation Project</span>
+          <span data-de>Internes Innovationsprojekt</span>
+        </div>
+        <p class="project-desc" data-en>Pilot project using Large Language Models to automate UI framework migration from Vue 2 to Vue 3. Developed AI-assisted code transformation pipelines using OpenAI and GitHub Copilot, significantly reducing manual migration effort.</p>
+        <p class="project-desc" data-de>Pilotprojekt zum Einsatz von Large Language Models für die automatisierte UI-Framework-Migration von Vue 2 zu Vue 3. KI-gestützte Code-Transformations-Pipelines mit OpenAI und GitHub Copilot, die den manuellen Migrationsaufwand deutlich reduzierten.</p>
+        <div class="project-tech">
+          <span class="tech-chip">Python</span><span class="tech-chip">Vue.js</span>
+          <span class="tech-chip">OpenAI</span><span class="tech-chip">GitHub Copilot</span><span class="tech-chip">LLM</span>
+        </div>
+      </div>
+      <div class="project-role">Developer</div>
+    </div>
+ 
+    <div class="project-item">
+      <div class="project-num">06</div>
+      <div class="project-content">
+        <h3>
+          <span data-en>Industrial Maintenance Platform</span>
+          <span data-de>Industrielle Wartungsplattform</span>
+        </h3>
+        <div class="project-client">
+          <span data-en>Manufacturing & Industry Sector</span>
+          <span data-de>Fertigungs- und Industriesektor</span>
+        </div>
+        <p class="project-desc" data-en>Full-stack platform simplifying maintenance workflows for industrial facilities. Responsible for frontend architecture enhancements, feature development, and bug fixing across a complex Angular and .NET Core stack.</p>
+        <p class="project-desc" data-de>Full-Stack-Plattform zur Vereinfachung von Wartungsprozessen in Industrieanlagen. Verantwortlich für Frontend-Architekturverbesserungen, Feature-Entwicklung und Fehlerbehebung im Angular- und .NET-Core-Stack.</p>
+        <div class="project-tech">
+          <span class="tech-chip">Angular</span><span class="tech-chip">.NET Core</span>
+          <span class="tech-chip">C#</span><span class="tech-chip">SQL Server</span>
+          <span class="tech-chip">TypeScript</span><span class="tech-chip">Entity Framework</span>
+        </div>
+      </div>
+      <div class="project-role">Full-stack Developer</div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag">
+    <span data-en>Career</span><span data-de>Karriere</span>
+  </div>
+  <h2>
+    <span data-en>Professional <em>Experience</em></span>
+    <span data-de>Berufliche <em>Erfahrung</em></span>
+  </h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-period">2022 — <span data-en>Present</span><span data-de>Heute</span></div>
+      <div class="timeline-role">Senior Software Engineer</div>
+      <div class="timeline-company">MaibornWolff GmbH · Hamburg</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">2020 — 2022</div>
+      <div class="timeline-role">Software Engineer</div>
+      <div class="timeline-company">MaibornWolff GmbH · Hamburg</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">2017 — 2020</div>
+      <div class="timeline-role">IT Consultant</div>
+      <div class="timeline-company">evodion IT Technologies GmbH · Hamburg</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-period">2010 — 2015</div>
+      <div class="timeline-role">
+        <span data-en>B.Eng. Informatics Engineering</span>
+        <span data-de>B.Eng. Informatik-Ingenieurwesen</span>
+      </div>
+      <div class="timeline-company">
+        <span data-en>University of Aleppo · Syria</span>
+        <span data-de>Universität Aleppo · Syrien</span>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="section-tag" style="margin-top:3.5rem">
+    <span data-en>Certifications</span><span data-de>Zertifizierungen</span>
+  </div>
+  <div class="certs-grid" style="margin-top:1rem">
+    <div class="cert-item">
+      <div class="cert-icon">☁️</div>
+      <div>
+        <div class="cert-name">Microsoft Certified: Azure Developer Associate</div>
+        <div class="cert-date">AZ-204 · July 2025</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">⚙️</div>
+      <div>
+        <div class="cert-name">Professional Scrum Developer I (PSD I)</div>
+        <div class="cert-date">Scrum.org · January 2025</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🏗️</div>
+      <div>
+        <div class="cert-name">iSAQB® Certified: Software Architecture Foundation</div>
+        <div class="cert-date">November 2023</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🤖</div>
+      <div>
+        <div class="cert-name">Microsoft Certified: Azure AI Fundamentals</div>
+        <div class="cert-date">AI-900 · Microsoft</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">🔷</div>
+      <div>
+        <div class="cert-name">Microsoft Certified: Azure Fundamentals</div>
+        <div class="cert-date">AZ-900 · Microsoft</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-icon">⚖️</div>
+      <div>
+        <div class="cert-name">
+          <span data-en>Authorized: Title 'Ingenieur' (Germany)</span>
+          <span data-de>Berechtigung: Titel 'Ingenieur' (Deutschland)</span>
+        </div>
+        <div class="cert-date">January 2017</div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <div class="section-tag">
+        <span data-en>Contact</span><span data-de>Kontakt</span>
+      </div>
+      <h2>
+        <span data-en>Let's work <em>together</em></span>
+        <span data-de>Lass uns <em>zusammenarbeiten</em></span>
+      </h2>
+      <p data-en>Available for freelance projects, consulting, and short-term contracts. Based in Hamburg — working remotely across Europe.</p>
+      <p data-de>Verfügbar für Freelance-Projekte, Beratung und kurzfristige Aufträge. Ansässig in Hamburg — arbeite remote in ganz Europa.</p>
+      <div class="available-badge" style="margin-top:0.5rem">
+        <span class="available-dot"></span>
+        <span data-en>Open to new projects</span>
+        <span data-de>Offen für neue Projekte</span>
+      </div>
+    </div>
+    <div>
+      <div class="contact-links">
+        <a href="mailto:rezgar91@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span>rezgar91@gmail.com
+        </a>
+        <a href="tel:+4917621574658" class="contact-link">
+          <span class="contact-link-icon">✆</span>+49 176 21574658
+        </a>
+        <a href="https://rezgar-muhammad.de" class="contact-link">
+          <span class="contact-link-icon">◈</span>rezgar-muhammad.de
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="contact-link">
+          <span class="contact-link-icon">in</span>LinkedIn
+        </a>
+        <a href="https://xing.com" target="_blank" class="contact-link">
+          <span class="contact-link-icon">✕</span>XING
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<footer>
+  <div class="footer-copy">© 2026 Rezgar Muhammad</div>
+  <div class="footer-location">Hamburg, Germany</div>
+</footer>
+ 
+<script>
+  // Language switch
+  function setLang(lang) {
+    document.body.classList.remove('lang-en','lang-de');
+    document.body.classList.add('lang-' + lang);
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    document.documentElement.lang = lang;
+    localStorage.setItem('lang', lang);
+  }
+ 
+  // Restore saved language
+  const saved = localStorage.getItem('lang');
+  if (saved) setLang(saved);
+ 
+  // Scroll animations
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+ 
+  document.querySelectorAll('section:not(.hero) h2, .skills-grid, .projects-list, .timeline, .certs-grid, .contact-grid').forEach(el => {
+    el.style.cssText = 'opacity:0;transform:translateY(22px);transition:opacity 0.7s ease,transform 0.7s ease';
+    obs.observe(el);
+  });
+ 
+  const projObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const n = parseInt(e.target.querySelector('.project-num')?.textContent || '1');
+        setTimeout(() => {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateX(0)';
+        }, (n - 1) * 80);
+        projObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05 });
+ 
+  document.querySelectorAll('.project-item').forEach(el => {
+    el.style.cssText = 'opacity:0;transform:translateX(-18px);transition:opacity 0.55s ease,transform 0.55s ease';
+    projObs.observe(el);
+  });
+</script>
 </body>
-
 </html>
