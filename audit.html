@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A fixed-scope 3–5 day audit of your Angular codebase: render performance, bundle size, architecture and tech debt. From €1,500.">
+<meta name="keywords" content="Angular Developer, Angular Audit, Azure, Full-Stack, Hamburg, Freelance, Software Engineer">
+<meta property="og:title" content="Angular Codebase & Performance Audit — Rezgar Muhammad">
+<meta property="og:description" content="A fixed-scope 3–5 day audit of your Angular codebase: render performance, bundle size, architecture and tech debt. From €1,500.">
+<meta property="og:url" content="https://rezgar-muhammad.de/audit.html">
+<title>Angular Codebase & Performance Audit — Rezgar Muhammad</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
+  a{color:var(--color-accent-700);text-decoration:none}
+  a:hover{color:var(--color-accent-800)}
+  h1,h2,h3{margin:0}
+  p{margin:0}
+</style>
+</head>
+<body>
+<div style="background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);line-height:1.6">
+
+  <header style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-8);flex-wrap:wrap;padding:var(--space-6) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider);position:sticky;top:0;background:var(--color-bg);z-index:10">
+    <a href="index.html" style="font-family:var(--font-heading);font-weight:600;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-text)">Rezgar Muhammad</a>
+    <nav style="display:flex;align-items:center;gap:var(--space-8);flex-wrap:wrap">
+      <a href="index.html#work" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Work</a>
+      <a href="index.html#experience" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Experience</a>
+      <a href="#audit" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700)">Audit</a>
+      <a href="mailto:rezgar91@gmail.com" class="btn btn-primary" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase">Request the audit</a>
+    </nav>
+  </header>
+
+  <section id="audit" style="padding:clamp(3rem,7vw,6rem) clamp(1.25rem,5vw,4rem);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,5vw,4.5rem);align-items:center;border-bottom:1px solid var(--color-divider)">
+    <div>
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-6)">Angular codebase &amp; performance health check</div>
+      <h1 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2.6rem,6vw,4.75rem);line-height:.95;text-transform:uppercase;margin-bottom:var(--space-8);text-wrap:pretty">Your Angular app got slow. In five days you'll know exactly why.</h1>
+      <p style="font-size:17px;color:var(--color-neutral-800);max-width:48ch;margin-bottom:var(--space-8);text-wrap:pretty">A fixed-scope audit of your Angular codebase: render performance, bundle size, architecture and tech debt — profiled, prioritised and written up. No retainer, no discovery theatre. You get a report your team can act on in the next sprint.</p>
+      <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+        <a href="mailto:rezgar91@gmail.com" class="btn btn-primary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px">Email me about an audit</a>
+        <a href="#deliverables" class="btn btn-secondary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px">See what you get</a>
+      </div>
+    </div>
+    <div class="blueprint" style="padding:var(--space-8)">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-6)">Spec sheet</div>
+      <div style="display:grid;gap:var(--space-6)">
+        <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Duration</span><span style="font-size:15px">3–5 working days</span></div>
+        
+          <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Fixed fee</span><span style="font-family:var(--font-heading);font-weight:600;font-size:34px;line-height:1;color:var(--color-accent-700)">From €1,500</span></div>
+        
+        <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Deliverables</span><span style="font-size:15px;text-align:right">PDF report + 1-hour review call</span></div>
+        <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">We need</span><span style="font-size:15px;text-align:right">Read-only repo access, NDA signed</span></div>
+        <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Your time</span><span style="font-size:15px;text-align:right">~90 minutes, total</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">Symptoms</div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:clamp(2rem,4vw,3rem)">What this fixes</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--color-divider);border:1px solid var(--color-divider)">
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;color:var(--color-accent-700);margin-bottom:var(--space-4)">01</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.1;text-transform:uppercase;margin-bottom:var(--space-4)">Screens that take seconds to react</h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700)">Change detection running thousands of times a click, unbounded lists, zone churn. I profile the real interactions your users complain about and name the components causing it.</p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;color:var(--color-accent-700);margin-bottom:var(--space-4)">02</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.1;text-transform:uppercase;margin-bottom:var(--space-4)">A bundle nobody can explain</h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700)">Moment, four icon sets, eager modules that should be lazy. You get the byte-level breakdown plus the specific cuts, ranked by kilobytes saved per hour of work.</p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;color:var(--color-accent-700);margin-bottom:var(--space-4)">03</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.1;text-transform:uppercase;margin-bottom:var(--space-4)">Teams afraid to touch the code</h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700)">RxJS nobody dares refactor, shared state with no owner, thin tests. I map the risky surfaces and the smallest structural changes that make the next feature sprint safe.</p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;color:var(--color-accent-700);margin-bottom:var(--space-4)">04</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.1;text-transform:uppercase;margin-bottom:var(--space-4)">Stuck three Angular versions back</h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700)">You get a realistic upgrade path — standalone components, signals, the new control flow — sequenced so it ships alongside product work instead of blocking it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="deliverables" style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">Deliverables</div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:clamp(2rem,4vw,3.5rem)">Two things, both concrete</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,4vw,3.5rem)">
+      <div class="blueprint" style="padding:var(--space-8)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">01 · Written report</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:28px;line-height:1.05;text-transform:uppercase;margin-bottom:var(--space-6)">5–10 pages, prioritised</h3>
+        <p style="font-size:15px;color:var(--color-neutral-700);margin-bottom:var(--space-8)">Every finding tagged high, medium or low priority, with the file paths, the measured impact and the fix. Written for engineers, with a one-page summary your CTO can read.</p>
+        <div style="display:grid;gap:var(--space-4)">
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px">Performance profile of your five worst interactions</div>
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px">Bundle &amp; dependency breakdown with cut list</div>
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px">Architecture &amp; state-management review</div>
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px">Upgrade path to current Angular, sequenced</div>
+        </div>
+      </div>
+      <div class="blueprint" style="padding:var(--space-8)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">02 · Review call</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:28px;line-height:1.05;text-transform:uppercase;margin-bottom:var(--space-6)">One hour, with your team</h3>
+        <p style="font-size:15px;color:var(--color-neutral-700);margin-bottom:var(--space-8)">We walk the findings top to bottom, argue about trade-offs, and leave with an agreed shortlist. Bring the developers who own the code — this is the part that changes behaviour.</p>
+        <div style="display:grid;gap:var(--space-4)">
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px">Walkthrough of high-priority findings</div>
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px">Effort estimates per fix, in developer days</div>
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px">Q&amp;A with your engineers, recorded if you want it</div>
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px">Optional: I implement the top fixes next</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">Process</div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:clamp(2rem,4vw,3rem)">Five days, start to report</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--color-divider);border:1px solid var(--color-divider)">
+      <div style="background:var(--color-bg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)">Day 0</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:20px;text-transform:uppercase;line-height:1.1">Kick-off</h3>
+        <p style="font-size:14px;color:var(--color-neutral-700)">NDA and one-page SOW signed, read-only repo access, a three-question intake form. No workshop required.</p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)">Day 1</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:20px;text-transform:uppercase;line-height:1.1">Static analysis</h3>
+        <p style="font-size:14px;color:var(--color-neutral-700)">Module graph, dependency health, lint and type strictness, test coverage where it matters.</p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)">Day 2–3</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:20px;text-transform:uppercase;line-height:1.1">Profiling</h3>
+        <p style="font-size:14px;color:var(--color-neutral-700)">Runtime traces on the interactions that hurt, bundle audit, change-detection and network waterfalls.</p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)">Day 4</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:20px;text-transform:uppercase;line-height:1.1">Report</h3>
+        <p style="font-size:14px;color:var(--color-neutral-700)">Findings ranked high / medium / low, each with evidence, effort and the concrete fix.</p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)">Day 5</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:20px;text-transform:uppercase;line-height:1.1">Review call</h3>
+        <p style="font-size:14px;color:var(--color-neutral-700)">One hour with your team, an agreed shortlist, and a decision on whether I implement it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,4vw,3.5rem);align-items:center">
+    <div>
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">Who runs it</div>
+      <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:var(--space-6)">Rezgar Muhammad</h2>
+      <p style="font-size:16px;color:var(--color-neutral-800);max-width:52ch;margin-bottom:var(--space-6)">Senior Software Engineer in Hamburg, shipping Angular in production since 2017 — resource planning for European aerospace, industrial IoT monitoring on Kubernetes, firmware portals for renewable energy. iSAQB-certified software architect, so the recommendations account for the system around the frontend, not just the components.</p>
+      <p style="font-size:16px;color:var(--color-neutral-800);max-width:52ch">I run these audits myself. No junior on the file, no template filled in by someone else.</p>
+    </div>
+    <div class="blueprint" style="padding:var(--space-8)">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="display:grid;gap:var(--space-6)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Years in production Angular</span><span style="font-family:var(--font-heading);font-weight:600;font-size:38px;line-height:1;color:var(--color-accent-700)">7+</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6);padding-top:var(--space-4);border-top:1px solid var(--color-divider)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Enterprise codebases</span><span style="font-family:var(--font-heading);font-weight:600;font-size:38px;line-height:1;color:var(--color-accent-700)">6</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6);padding-top:var(--space-4);border-top:1px solid var(--color-divider)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Certified architect</span><span style="font-family:var(--font-heading);font-weight:600;font-size:30px;line-height:1;color:var(--color-accent-700)">iSAQB</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);text-align:center">
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin:0 auto var(--space-6);max-width:24ch">Send me the repo. I'll tell you if it's worth auditing.</h2>
+    <p style="font-size:16px;color:var(--color-neutral-800);max-width:52ch;margin:0 auto var(--space-8)">One email with your stack, your Angular version and the thing that's slow. I reply within two working days with a yes, a no, or a cheaper suggestion.</p>
+    <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
+      <a href="mailto:rezgar91@gmail.com" class="btn btn-primary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px">rezgar91@gmail.com</a>
+      <a href="index.html" class="btn btn-secondary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px">See my work first</a>
+    </div>
+  </section>
+
+  <footer style="display:flex;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;padding:var(--space-8) clamp(1.25rem,5vw,4rem);border-top:1px solid var(--color-divider);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">
+    <span>© 2026 Rezgar Muhammad</span>
+    <span>Hamburg, Germany</span>
+  </footer>
+</div>
+</body>
+</html>
