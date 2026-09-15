@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rezgar Muhammad — Senior Software Engineer, Hamburg. Full-stack with a focus on Angular architecture. Angular codebase & performance audits from €1,500.">
+<meta name="keywords" content="Angular Developer, Angular Architecture, Angular Audit, Full-Stack, Hamburg, Freelance, Software Engineer">
+<meta property="og:title" content="Rezgar Muhammad — Senior Software Engineer">
+<meta property="og:description" content="Rezgar Muhammad — Senior Software Engineer, Hamburg. Full-stack with a focus on Angular architecture. Angular codebase & performance audits from €1,500.">
+<meta property="og:url" content="https://rezgar-muhammad.de">
+<title>Rezgar Muhammad — Senior Software Engineer</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
+  a{color:var(--color-accent-700);text-decoration:none}
+  a:hover{color:var(--color-accent-800)}
+  h1,h2,h3{margin:0}
+  p{margin:0}
+  [data-de]{display:none}
+  body.lang-de [data-en]{display:none}
+  body.lang-de [data-de]{display:revert}
+  .lang-btn{font-family:var(--font-body);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border:0;background:transparent;color:var(--color-neutral-700);cursor:pointer}
+  .lang-btn[data-lang="en"]{background:var(--color-accent);color:var(--color-bg)}
+  body.lang-de .lang-btn[data-lang="en"]{background:transparent;color:var(--color-neutral-700)}
+  body.lang-de .lang-btn[data-lang="de"]{background:var(--color-accent);color:var(--color-bg)}
+  #contact a:hover{background:var(--color-accent-100)}
+</style>
+</head>
+<body>
+<div style="background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);line-height:1.6">
+
+  <header style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-8);flex-wrap:wrap;padding:var(--space-6) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider);position:sticky;top:0;background:var(--color-bg);z-index:10">
+    <a href="#top" style="font-family:var(--font-heading);font-weight:600;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-text)">Rezgar Muhammad</a>
+    <nav style="display:flex;align-items:center;gap:var(--space-8);flex-wrap:wrap">
+      <a href="#work" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Work</span><span data-de>Projekte</span></a>
+      <a href="#experience" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Experience</span><span data-de>Erfahrung</span></a>
+      <a href="#skills" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Skills</span><span data-de>Kenntnisse</span></a>
+      <a href="#contact" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Contact</span><span data-de>Kontakt</span></a>
+      <a href="audit/" class="btn btn-primary" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase"><span data-en>Angular audit</span><span data-de>Angular-Audit</span></a>
+      <div style="display:flex;border:1px solid var(--color-divider)">
+        <button type="button" class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button type="button" class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+      </div>
+    </nav>
+  </header>
+
+  <section id="top" style="padding:clamp(3rem,7vw,6rem) clamp(1.25rem,5vw,4rem);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,5vw,4.5rem);align-items:end;border-bottom:1px solid var(--color-divider)">
+    <div>
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-6)">Senior Software Engineer · Hamburg</div>
+      <h1 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(3rem,7vw,5.5rem);line-height:.92;letter-spacing:.005em;text-transform:uppercase;margin-bottom:var(--space-8)"><span data-en>Angular<br>architecture,<br>built to last</span><span data-de>Angular-<br>Architektur,<br>solide gebaut</span></h1>
+      <p style="font-size:17px;max-width:46ch;color:var(--color-neutral-800);margin-bottom:var(--space-8);text-wrap:pretty"><span data-en>Full-stack engineer with a focus on Angular architecture — and the backends that sit behind it. Production-grade enterprise applications since 2017: aerospace, industrial IoT, renewable energy.</span><span data-de>Full-Stack-Entwickler mit Fokus auf Angular-Architektur — und die Backends dahinter. Produktionsreife Unternehmensanwendungen seit 2017: Luft- und Raumfahrt, industrielles IoT, erneuerbare Energien.</span></p>
+      <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+        <a href="#work" class="btn btn-primary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px"><span data-en>Selected work</span><span data-de>Ausgewählte Projekte</span></a>
+        <a href="audit/" class="btn btn-secondary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px"><span data-en>Angular audit — from €1,500</span><span data-de>Angular-Audit — ab 1.500 €</span></a>
+      </div>
+    </div>
+    <div class="blueprint" style="padding:var(--space-8)">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-6)"><span data-en>Record</span><span data-de>Bilanz</span></div>
+      <div style="display:grid;gap:var(--space-6)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6)">
+          <span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Years in production</span><span data-de>Jahre in Produktion</span></span>
+          <span style="font-family:var(--font-heading);font-weight:600;font-size:38px;line-height:1;color:var(--color-accent-700)">7+</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6)">
+          <span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Enterprise projects</span><span data-de>Unternehmensprojekte</span></span>
+          <span style="font-family:var(--font-heading);font-weight:600;font-size:38px;line-height:1;color:var(--color-accent-700)">6</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6)">
+          <span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Certifications</span><span data-de>Zertifizierungen</span></span>
+          <span style="font-family:var(--font-heading);font-weight:600;font-size:38px;line-height:1;color:var(--color-accent-700)">5</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6);padding-top:var(--space-4);border-top:1px solid var(--color-divider)">
+          <span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Availability</span><span data-de>Verfügbarkeit</span></span>
+          <span style="font-size:14px;color:var(--color-text)"><span data-en>Freelance — EU remote</span><span data-de>Freelance — EU remote</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>Freelance service</span><span data-de>Freelance-Leistung</span></div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:var(--space-8)"><span data-en>Angular codebase &amp; performance audit</span><span data-de>Angular Codebase- &amp; Performance-Audit</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,4vw,3.5rem);align-items:start">
+      <div>
+        <p style="font-size:17px;color:var(--color-neutral-800);max-width:52ch;margin-bottom:var(--space-6)"><span data-en>I help companies modernise and speed up sluggish Angular applications — fixed scope, fixed fee, three to five days.</span><span data-de>Ich helfe Unternehmen, träge Angular-Anwendungen zu modernisieren und zu beschleunigen — fester Umfang, fester Preis, drei bis fünf Tage.</span></p>
+        <p style="font-size:15px;color:var(--color-neutral-700);max-width:56ch;margin-bottom:var(--space-8)"><span data-en>Render performance, bundle size, architecture and tech debt, profiled and written up. You get a prioritised report and an hour with your team. Most clients start here before deciding whether I implement the fixes.</span><span data-de>Render-Performance, Bundle-Größe, Architektur und technische Schulden — profiliert und dokumentiert. Sie erhalten einen priorisierten Bericht und eine Stunde mit Ihrem Team. Die meisten Kunden starten hier, bevor sie entscheiden, ob ich die Fixes umsetze.</span></p>
+        <div style="display:grid;gap:var(--space-4);margin-bottom:var(--space-8)">
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;font-size:15px"><span style="color:var(--color-accent-700);font-size:11px">01</span><span><span data-en>Slow renders and change-detection storms, located and named</span><span data-de>Langsame Renders und Change-Detection-Stürme — lokalisiert und benannt</span></span></div>
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;font-size:15px"><span style="color:var(--color-accent-700);font-size:11px">02</span><span><span data-en>Bundle broken down byte by byte, with a ranked cut list</span><span data-de>Bundle Byte für Byte aufgeschlüsselt, mit priorisierter Streichliste</span></span></div>
+          <div style="display:flex;gap:var(--space-4);align-items:baseline;font-size:15px"><span style="color:var(--color-accent-700);font-size:11px">03</span><span><span data-en>A sequenced upgrade path to the current Angular version</span><span data-de>Ein realistischer Upgrade-Pfad zur aktuellen Angular-Version</span></span></div>
+        </div>
+        <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+          <a href="audit/" class="btn btn-primary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px"><span data-en>How the audit works</span><span data-de>So läuft das Audit</span></a>
+          <a href="mailto:mail@rezgar-muhammad.de" class="btn btn-secondary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px"><span data-en>Email me</span><span data-de>E-Mail schreiben</span></a>
+        </div>
+      </div>
+      <div class="blueprint" style="padding:var(--space-8)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-6)"><span data-en>Spec sheet</span><span data-de>Datenblatt</span></div>
+        <div style="display:grid;gap:var(--space-6)">
+          <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Duration</span><span data-de>Dauer</span></span><span style="font-size:15px"><span data-en>3–5 working days</span><span data-de>3–5 Arbeitstage</span></span></div>
+          
+            <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Fixed fee</span><span data-de>Festpreis</span></span><span style="font-family:var(--font-heading);font-weight:600;font-size:30px;line-height:1;color:var(--color-accent-700)"><span data-en>From €1,500</span><span data-de>ab 1.500 €</span></span></div>
+          
+          <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>You get</span><span data-de>Sie erhalten</span></span><span style="font-size:15px;text-align:right"><span data-en>5–10 page report + 1-hour call</span><span data-de>5–10-seitiger Bericht + 1-Stunden-Call</span></span></div>
+          <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Your effort</span><span data-de>Ihr Aufwand</span></span><span style="font-size:15px;text-align:right"><span data-en>Repo access, ~90 minutes</span><span data-de>Repo-Zugang, ca. 90 Minuten</span></span></div>
+          <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Remote</span><span style="font-size:15px;text-align:right"><span data-en>EU timezones, DE / EN</span><span data-de>EU-Zeitzonen, DE / EN</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>Work</span><span data-de>Arbeit</span></div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:clamp(2rem,4vw,3.5rem)"><span data-en>Selected projects</span><span data-de>Ausgewählte Projekte</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,4vw,3rem)">
+
+      <div class="blueprint" style="padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="display:flex;justify-content:space-between;gap:var(--space-4);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700)"><span><span data-en>01 · European aerospace</span><span data-de>01 · Luft- und Raumfahrt</span></span><span>Full-Stack</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;text-transform:uppercase"><span data-en>Resource Management Platform</span><span data-de>Ressourcenverwaltungsplattform</span></h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700);flex:1"><span data-en>Central system used across multiple European countries to plan personnel distribution and workload allocation, and to generate executive management reports.</span><span data-de>Zentrales System in mehreren europäischen Ländern zur Personalverteilung, Auslastungsplanung und Erstellung von Management-Berichten.</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+          <span class="tag tag-outline">Kotlin</span><span class="tag tag-outline">Spring Boot</span><span class="tag tag-outline">Angular</span><span class="tag tag-outline">MariaDB</span><span class="tag tag-outline">Azure</span>
+        </div>
+      </div>
+
+      <div class="blueprint" style="padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="display:flex;justify-content:space-between;gap:var(--space-4);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700)"><span><span data-en>02 · Consumer goods</span><span data-de>02 · Konsumgüter</span></span><span>Full-Stack</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;text-transform:uppercase"><span data-en>Business Analytics Dashboard</span><span data-de>Business-Analytics-Dashboard</span></h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700);flex:1"><span data-en>Customisable reporting dashboard consolidating data from multiple APIs with real-time visualisation. Deployed on Azure with full DevOps pipelines.</span><span data-de>Anpassbares Reporting-Dashboard mit Echtzeit-Datenvisualisierung aus mehreren API-Quellen. Deployment auf Azure mit vollständiger DevOps-Pipeline.</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+          <span class="tag tag-outline">Vue.js</span><span class="tag tag-outline">Python</span><span class="tag tag-outline">Flask</span><span class="tag tag-outline">Azure DevOps</span>
+        </div>
+      </div>
+
+      <div class="blueprint" style="padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="display:flex;justify-content:space-between;gap:var(--space-4);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700)"><span><span data-en>03 · Safety technology</span><span data-de>03 · Sicherheitstechnologie</span></span><span>Frontend</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;text-transform:uppercase"><span data-en>Industrial IoT Monitoring</span><span data-de>Industrielles IoT-Monitoring</span></h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700);flex:1"><span data-en>Kubernetes cloud app for real-time monitoring of gas detectors and workers in industrial plants. Serverless Azure Functions for event-driven safety alerts.</span><span data-de>Kubernetes-App zur Echtzeit-Überwachung von Gasdetektoren in Industrieanlagen. Serverlose Azure Functions für ereignisgesteuerte Sicherheitswarnungen.</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+          <span class="tag tag-outline">Angular</span><span class="tag tag-outline">Azure Functions</span><span class="tag tag-outline">Kubernetes</span><span class="tag tag-outline">.NET</span>
+        </div>
+      </div>
+
+      <div class="blueprint" style="padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="display:flex;justify-content:space-between;gap:var(--space-4);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700)"><span><span data-en>04 · Renewable energy</span><span data-de>04 · Erneuerbare Energien</span></span><span>Full-Stack</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;text-transform:uppercase"><span data-en>Firmware Management Portal</span><span data-de>Firmware-Management-Portal</span></h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700);flex:1"><span data-en>Angular portal for remote firmware updates across solar system components. Java backend, Keycloak SSO, Jenkins CI/CD in an agile Scrum team.</span><span data-de>Angular-Portal für Remote-Firmware-Updates in Solarenergiesystemen. Java-Backend, Keycloak-SSO, Jenkins CI/CD im agilen Scrum-Team.</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+          <span class="tag tag-outline">Angular</span><span class="tag tag-outline">Java</span><span class="tag tag-outline">Keycloak</span><span class="tag tag-outline">Docker</span><span class="tag tag-outline">Jenkins</span>
+        </div>
+      </div>
+
+      <div class="blueprint" style="padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="display:flex;justify-content:space-between;gap:var(--space-4);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700)"><span><span data-en>05 · Internal innovation</span><span data-de>05 · Internes Innovationsprojekt</span></span><span><span data-en>Developer</span><span data-de>Entwickler</span></span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;text-transform:uppercase"><span data-en>AI-Powered Framework Migration</span><span data-de>KI-gestützte Framework-Migration</span></h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700);flex:1"><span data-en>Pilot using LLMs to automate UI migration from Vue 2 to Vue 3 via OpenAI and GitHub Copilot, significantly reducing manual effort.</span><span data-de>Pilotprojekt mit LLMs zur automatisierten UI-Migration von Vue 2 zu Vue 3 — deutliche Reduktion des manuellen Aufwands.</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+          <span class="tag tag-outline">Python</span><span class="tag tag-outline">Vue.js</span><span class="tag tag-outline">OpenAI</span><span class="tag tag-outline">LLM</span>
+        </div>
+      </div>
+
+      <div class="blueprint" style="padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="display:flex;justify-content:space-between;gap:var(--space-4);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700)"><span><span data-en>06 · Manufacturing</span><span data-de>06 · Fertigung &amp; Industrie</span></span><span>Full-Stack</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:24px;line-height:1.1;text-transform:uppercase"><span data-en>Industrial Maintenance Platform</span><span data-de>Industrielle Wartungsplattform</span></h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700);flex:1"><span data-en>Full-stack platform simplifying maintenance workflows for industrial facilities. Angular frontend, .NET Core backend, Entity Framework with SQL Server.</span><span data-de>Full-Stack-Plattform zur Vereinfachung industrieller Wartungsprozesse. Angular-Frontend, .NET-Core-Backend, Entity Framework mit SQL Server.</span></p>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+          <span class="tag tag-outline">Angular</span><span class="tag tag-outline">.NET Core</span><span class="tag tag-outline">C#</span><span class="tag tag-outline">SQL Server</span><span class="tag tag-outline">EF</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="experience" style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>Career</span><span data-de>Karriere</span></div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:clamp(2rem,4vw,3rem)"><span data-en>Experience</span><span data-de>Erfahrung</span></h2>
+    <div style="display:grid;gap:0">
+      <div style="display:grid;grid-template-columns:minmax(120px,160px) 1fr;gap:var(--space-8);padding:var(--space-6) 0;border-top:1px solid var(--color-divider)">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">2022 — <span data-en>Present</span><span data-de>Heute</span></span>
+        <div><h3 style="font-family:var(--font-heading);font-weight:600;font-size:22px;text-transform:uppercase;line-height:1.1">Senior Software Engineer</h3><p style="font-size:14.5px;color:var(--color-neutral-700)">MaibornWolff GmbH · Hamburg</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,160px) 1fr;gap:var(--space-8);padding:var(--space-6) 0;border-top:1px solid var(--color-divider)">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">2020 — 2022</span>
+        <div><h3 style="font-family:var(--font-heading);font-weight:600;font-size:22px;text-transform:uppercase;line-height:1.1">Software Engineer</h3><p style="font-size:14.5px;color:var(--color-neutral-700)">MaibornWolff GmbH · Hamburg</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,160px) 1fr;gap:var(--space-8);padding:var(--space-6) 0;border-top:1px solid var(--color-divider)">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">2017 — 2020</span>
+        <div><h3 style="font-family:var(--font-heading);font-weight:600;font-size:22px;text-transform:uppercase;line-height:1.1"><span data-en>IT Consultant</span><span data-de>IT-Consultant</span></h3><p style="font-size:14.5px;color:var(--color-neutral-700)">evodion IT Technologies GmbH · Hamburg</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(120px,160px) 1fr;gap:var(--space-8);padding:var(--space-6) 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
+        <span style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">2010 — 2015</span>
+        <div><h3 style="font-family:var(--font-heading);font-weight:600;font-size:22px;text-transform:uppercase;line-height:1.1"><span data-en>B.Eng. Informatics Engineering</span><span data-de>B.Eng. Informatik-Ingenieurwesen</span></h3><p style="font-size:14.5px;color:var(--color-neutral-700)"><span data-en>University of Aleppo · Syria</span><span data-de>Universität Aleppo · Syrien</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)">Expertise</div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:clamp(2rem,4vw,3rem)"><span data-en>Technical skills</span><span data-de>Technische Kenntnisse</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--color-divider);border:1px solid var(--color-divider)">
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-6)">Frontend</div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)"><span class="tag tag-outline">Angular</span><span class="tag tag-outline">TypeScript</span><span class="tag tag-outline">RxJS</span><span class="tag tag-outline">NgRx</span><span class="tag tag-outline">React</span><span class="tag tag-outline">Vue.js</span><span class="tag tag-outline">GraphQL</span></div>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-6)">Backend</div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)"><span class="tag tag-outline">Kotlin</span><span class="tag tag-outline">Spring Boot</span><span class="tag tag-outline">C# / .NET</span><span class="tag tag-outline">Node.js</span><span class="tag tag-outline">Nest.js</span><span class="tag tag-outline">Python</span><span class="tag tag-outline">SQL Server</span></div>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-6)">Cloud &amp; DevOps</div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)"><span class="tag tag-outline">Azure</span><span class="tag tag-outline">Azure Functions</span><span class="tag tag-outline">Kubernetes</span><span class="tag tag-outline">Docker</span><span class="tag tag-outline">Azure DevOps</span><span class="tag tag-outline">CI/CD</span></div>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-6)"><span data-en>Architecture</span><span data-de>Architektur</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)"><span class="tag tag-outline"><span data-en>Software Architecture</span><span data-de>Softwarearchitektur</span></span><span class="tag tag-outline">Design Patterns</span><span class="tag tag-outline">iSAQB Certified</span><span class="tag tag-outline">Microservices</span></div>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-6)"><span data-en>Methods &amp; tools</span><span data-de>Methoden &amp; Werkzeuge</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)"><span class="tag tag-outline">Scrum / Agile</span><span class="tag tag-outline">Jira</span><span class="tag tag-outline">Git</span><span class="tag tag-outline">Keycloak</span><span class="tag tag-outline">OpenAI / LLM</span><span class="tag tag-outline">Swagger</span></div>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-6)"><span data-en>Languages</span><span data-de>Sprachen</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)"><span class="tag tag-outline"><span data-en>Kurdish — Native</span><span data-de>Kurdisch — Muttersprache</span></span><span class="tag tag-outline"><span data-en>Arabic — Native</span><span data-de>Arabisch — Muttersprache</span></span><span class="tag tag-outline"><span data-en>English — C1</span><span data-de>Englisch — C1</span></span><span class="tag tag-outline">Deutsch — C1</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>Credentials</span><span data-de>Nachweise</span></div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:clamp(2rem,4vw,3rem)"><span data-en>Certifications</span><span data-de>Zertifizierungen</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 clamp(2rem,4vw,3.5rem)">
+      <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline;padding:var(--space-6) 0;border-top:1px solid var(--color-divider)"><span style="font-size:15px">Microsoft Certified: Azure Developer Associate</span><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);white-space:nowrap">AZ-204 · 2025</span></div>
+      <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline;padding:var(--space-6) 0;border-top:1px solid var(--color-divider)"><span style="font-size:15px">Professional Scrum Developer I</span><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);white-space:nowrap">Scrum.org · 2025</span></div>
+      <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline;padding:var(--space-6) 0;border-top:1px solid var(--color-divider)"><span style="font-size:15px">iSAQB® Software Architecture Foundation</span><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);white-space:nowrap">2023</span></div>
+      <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline;padding:var(--space-6) 0;border-top:1px solid var(--color-divider)"><span style="font-size:15px">Microsoft Certified: Azure AI Fundamentals</span><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);white-space:nowrap">AI-900</span></div>
+      <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline;padding:var(--space-6) 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)"><span style="font-size:15px">Microsoft Certified: Azure Fundamentals</span><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);white-space:nowrap">AZ-900</span></div>
+      <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline;padding:var(--space-6) 0;border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)"><span style="font-size:15px"><span data-en>Authorised title “Ingenieur” (Germany)</span><span data-de>Berechtigung: Titel „Ingenieur“ (Deutschland)</span></span><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-neutral-700);white-space:nowrap">2017</span></div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,4vw,3.5rem);align-items:center">
+    <div>
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>Contact</span><span data-de>Kontakt</span></div>
+      <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:var(--space-6)"><span data-en>Let's talk</span><span data-de>Kontakt aufnehmen</span></h2>
+      <p style="font-size:16px;color:var(--color-neutral-800);max-width:44ch"><span data-en>Freelance full-stack work, Angular audits, and frontend architecture reviews. Hamburg-based, remote across the EU. I answer within two working days.</span><span data-de>Freelance-Projekte im Full-Stack-Bereich, Angular-Audits und Frontend-Architektur-Reviews. Ansässig in Hamburg, remote in der EU. Ich antworte innerhalb von zwei Arbeitstagen.</span></p>
+    </div>
+    <div class="blueprint" style="padding:0">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <a href="mailto:mail@rezgar-muhammad.de" style="display:flex;justify-content:space-between;gap:var(--space-6);padding:var(--space-6) var(--space-8);border-bottom:1px solid var(--color-divider);font-size:15px;color:var(--color-text)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">E-Mail</span><span>mail@rezgar-muhammad.de</span></a>
+      <a href="tel:+4917621574658" style="display:flex;justify-content:space-between;gap:var(--space-6);padding:var(--space-6) var(--space-8);border-bottom:1px solid var(--color-divider);font-size:15px;color:var(--color-text)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Phone</span><span data-de>Telefon</span></span><span>+49 176 21574658</span></a>
+      <a href="https://rezgar-muhammad.de" style="display:flex;justify-content:space-between;gap:var(--space-6);padding:var(--space-6) var(--space-8);border-bottom:1px solid var(--color-divider);font-size:15px;color:var(--color-text)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Web</span><span>rezgar-muhammad.de</span></a>
+      <a href="https://www.linkedin.com/in/rezgar-muhammad/" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;gap:var(--space-6);padding:var(--space-6) var(--space-8);border-bottom:1px solid var(--color-divider);font-size:15px;color:var(--color-text)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">LinkedIn</span><span><span data-en>Profile</span><span data-de>Profil</span></span></a>
+      <a href="https://www.xing.com/profile/Rezgar_Muhammad/portfolio" target="_blank" rel="noopener" style="display:flex;justify-content:space-between;gap:var(--space-6);padding:var(--space-6) var(--space-8);font-size:15px;color:var(--color-text)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">XING</span><span><span data-en>Profile</span><span data-de>Profil</span></span></a>
+    </div>
+  </section>
+
+  <footer style="display:flex;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;padding:var(--space-8) clamp(1.25rem,5vw,4rem);border-top:1px solid var(--color-divider);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">
+    <span>© 2026 Rezgar Muhammad</span>
+    <span><span data-en>Hamburg, Germany</span><span data-de>Hamburg, Deutschland</span></span>
+  </footer>
+</div>
+<script>
+(function(){
+  var KEY='rm-lang';
+  function apply(l){document.body.classList.toggle('lang-de',l==='de');document.documentElement.lang=l;}
+  try{apply(localStorage.getItem(KEY)==='de'?'de':'en');}catch(e){}
+  window.setLang=function(l){apply(l);try{localStorage.setItem(KEY,l);}catch(e){}};
+})();
+</script>
+</body>
+</html>

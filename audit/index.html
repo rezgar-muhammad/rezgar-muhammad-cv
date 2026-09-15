@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A fixed-scope 3–5 day audit of your Angular codebase: render performance, bundle size, architecture and tech debt. From €1,500.">
+<meta name="keywords" content="Angular Developer, Angular Architecture, Angular Audit, Full-Stack, Hamburg, Freelance, Software Engineer">
+<meta property="og:title" content="Angular Codebase & Performance Audit — Rezgar Muhammad">
+<meta property="og:description" content="A fixed-scope 3–5 day audit of your Angular codebase: render performance, bundle size, architecture and tech debt. From €1,500.">
+<meta property="og:url" content="https://rezgar-muhammad.de/audit/">
+<title>Angular Codebase & Performance Audit — Rezgar Muhammad</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
+  a{color:var(--color-accent-700);text-decoration:none}
+  a:hover{color:var(--color-accent-800)}
+  h1,h2,h3{margin:0}
+  p{margin:0}
+  [data-de]{display:none}
+  body.lang-de [data-en]{display:none}
+  body.lang-de [data-de]{display:revert}
+  .lang-btn{font-family:var(--font-body);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border:0;background:transparent;color:var(--color-neutral-700);cursor:pointer}
+  .lang-btn[data-lang="en"]{background:var(--color-accent);color:var(--color-bg)}
+  body.lang-de .lang-btn[data-lang="en"]{background:transparent;color:var(--color-neutral-700)}
+  body.lang-de .lang-btn[data-lang="de"]{background:var(--color-accent);color:var(--color-bg)}
+</style>
+</head>
+<body>
+<div style="background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);line-height:1.6">
+
+  <header style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-8);flex-wrap:wrap;padding:var(--space-6) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider);position:sticky;top:0;background:var(--color-bg);z-index:10">
+    <a href="../" style="font-family:var(--font-heading);font-weight:600;font-size:18px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-text)">Rezgar Muhammad</a>
+    <nav style="display:flex;align-items:center;gap:var(--space-8);flex-wrap:wrap">
+      <a href="../#work" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Work</span><span data-de>Projekte</span></a>
+      <a href="../#experience" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Experience</span><span data-de>Erfahrung</span></a>
+      <a href="#audit" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-accent-700)">Audit</a>
+      <a href="mailto:mail@rezgar-muhammad.de?subject=Angular%20audit%20enquiry" class="btn btn-primary" style="font-size:12px;letter-spacing:.14em;text-transform:uppercase"><span data-en>Request the audit</span><span data-de>Audit anfragen</span></a>
+      <div style="display:flex;border:1px solid var(--color-divider)">
+        <button type="button" class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button type="button" class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+      </div>
+    </nav>
+  </header>
+
+  <section id="audit" style="padding:clamp(3rem,7vw,6rem) clamp(1.25rem,5vw,4rem);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,5vw,4.5rem);align-items:center;border-bottom:1px solid var(--color-divider)">
+    <div>
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-6)"><span data-en>Angular codebase &amp; performance health check</span><span data-de>Angular Codebase- &amp; Performance-Check</span></div>
+      <h1 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2.6rem,6vw,4.75rem);line-height:.95;text-transform:uppercase;margin-bottom:var(--space-8);text-wrap:pretty"><span data-en>Your Angular app got slow. In five days you'll know exactly why.</span><span data-de>Ihre Angular-App ist langsam geworden. In fünf Tagen wissen Sie genau, warum.</span></h1>
+      <p style="font-size:17px;color:var(--color-neutral-800);max-width:48ch;margin-bottom:var(--space-8);text-wrap:pretty"><span data-en>A fixed-scope audit of your Angular codebase: render performance, bundle size, architecture and tech debt — profiled, prioritised and written up. No retainer, no discovery theatre. You get a report your team can act on in the next sprint.</span><span data-de>Ein Audit Ihrer Angular-Codebasis mit festem Umfang: Render-Performance, Bundle-Größe, Architektur und technische Schulden — profiliert, priorisiert und dokumentiert. Kein Retainer, kein Discovery-Theater. Sie erhalten einen Bericht, mit dem Ihr Team im nächsten Sprint arbeiten kann.</span></p>
+      <div style="display:flex;gap:var(--space-4);flex-wrap:wrap">
+        <a href="mailto:mail@rezgar-muhammad.de?subject=Angular%20audit%20enquiry" class="btn btn-primary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px"><span data-en>Email me about an audit</span><span data-de>Audit per E-Mail anfragen</span></a>
+        <a href="#deliverables" class="btn btn-secondary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px"><span data-en>See what you get</span><span data-de>Was Sie erhalten</span></a>
+      </div>
+    </div>
+    <div class="blueprint" style="padding:var(--space-8)">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-neutral-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-6)"><span data-en>Spec sheet</span><span data-de>Datenblatt</span></div>
+      <div style="display:grid;gap:var(--space-6)">
+        <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Duration</span><span data-de>Dauer</span></span><span style="font-size:15px"><span data-en>3–5 working days</span><span data-de>3–5 Arbeitstage</span></span></div>
+        
+          <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Fixed fee</span><span data-de>Festpreis</span></span><span style="font-family:var(--font-heading);font-weight:600;font-size:34px;line-height:1;color:var(--color-accent-700)"><span data-en>From €1,500</span><span data-de>ab 1.500 €</span></span></div>
+        
+        <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Deliverables</span><span data-de>Ergebnisse</span></span><span style="font-size:15px;text-align:right"><span data-en>PDF report + 1-hour review call</span><span data-de>PDF-Bericht + 1-Stunden-Review-Call</span></span></div>
+        <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>We need</span><span data-de>Benötigt</span></span><span style="font-size:15px;text-align:right"><span data-en>Read-only repo access, NDA signed</span><span data-de>Lesender Repo-Zugang, NDA unterzeichnet</span></span></div>
+        <div style="display:flex;justify-content:space-between;gap:var(--space-6);align-items:baseline"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Your time</span><span data-de>Ihr Zeitaufwand</span></span><span style="font-size:15px;text-align:right"><span data-en>~90 minutes, total</span><span data-de>ca. 90 Minuten insgesamt</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>Symptoms</span><span data-de>Symptome</span></div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:clamp(2rem,4vw,3rem)"><span data-en>What this fixes</span><span data-de>Was das löst</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--color-divider);border:1px solid var(--color-divider)">
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;color:var(--color-accent-700);margin-bottom:var(--space-4)">01</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.1;text-transform:uppercase;margin-bottom:var(--space-4)"><span data-en>Screens that take seconds to react</span><span data-de>Masken, die Sekunden brauchen</span></h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700)"><span data-en>Change detection running thousands of times a click, unbounded lists, zone churn. I profile the real interactions your users complain about and name the components causing it.</span><span data-de>Change Detection, die pro Klick tausendfach läuft, unbegrenzte Listen, Zone-Churn. Ich profiliere die Interaktionen, über die Ihre Nutzer klagen, und benenne die verursachenden Komponenten.</span></p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;color:var(--color-accent-700);margin-bottom:var(--space-4)">02</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.1;text-transform:uppercase;margin-bottom:var(--space-4)"><span data-en>A bundle nobody can explain</span><span data-de>Ein Bundle, das niemand erklären kann</span></h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700)"><span data-en>Moment, four icon sets, eager modules that should be lazy. You get the byte-level breakdown plus the specific cuts, ranked by kilobytes saved per hour of work.</span><span data-de>Moment.js, vier Icon-Sets, eager geladene Module, die lazy sein sollten. Sie erhalten die Aufschlüsselung auf Byte-Ebene und die konkreten Streichungen, sortiert nach gesparten Kilobyte pro Arbeitsstunde.</span></p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;color:var(--color-accent-700);margin-bottom:var(--space-4)">03</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.1;text-transform:uppercase;margin-bottom:var(--space-4)"><span data-en>Teams afraid to touch the code</span><span data-de>Teams, die den Code nicht anfassen</span></h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700)"><span data-en>RxJS nobody dares refactor, shared state with no owner, thin tests. I map the risky surfaces and the smallest structural changes that make the next feature sprint safe.</span><span data-de>RxJS, das niemand refactoren will, geteilter State ohne Verantwortlichen, dünne Tests. Ich kartiere die riskanten Bereiche und die kleinsten strukturellen Änderungen, die den nächsten Feature-Sprint sicher machen.</span></p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8)">
+        <div style="font-size:10px;letter-spacing:.2em;color:var(--color-accent-700);margin-bottom:var(--space-4)">04</div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.1;text-transform:uppercase;margin-bottom:var(--space-4)"><span data-en>Stuck three Angular versions back</span><span data-de>Drei Angular-Versionen im Rückstand</span></h3>
+        <p style="font-size:14.5px;color:var(--color-neutral-700)"><span data-en>You get a realistic upgrade path — standalone components, signals, the new control flow — sequenced so it ships alongside product work instead of blocking it.</span><span data-de>Sie erhalten einen realistischen Upgrade-Pfad — Standalone Components, Signals, den neuen Control Flow — so sequenziert, dass er neben der Produktarbeit läuft statt sie zu blockieren.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="deliverables" style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>Deliverables</span><span data-de>Ergebnisse</span></div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:clamp(2rem,4vw,3.5rem)"><span data-en>Two things, both concrete</span><span data-de>Zwei Dinge, beide konkret</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,4vw,3.5rem)">
+      <div class="blueprint" style="padding:var(--space-8)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>01 · Written report</span><span data-de>01 · Schriftlicher Bericht</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:28px;line-height:1.05;text-transform:uppercase;margin-bottom:var(--space-6)"><span data-en>5–10 pages, prioritised</span><span data-de>5–10 Seiten, priorisiert</span></h3>
+        <p style="font-size:15px;color:var(--color-neutral-700);margin-bottom:var(--space-8)"><span data-en>Every finding tagged high, medium or low priority, with the file paths, the measured impact and the fix. Written for engineers, with a one-page summary your CTO can read.</span><span data-de>Jeder Befund mit hoher, mittlerer oder niedriger Priorität, mit Dateipfaden, gemessener Auswirkung und Lösung. Für Entwickler geschrieben, mit einer einseitigen Zusammenfassung für Ihren CTO.</span></p>
+        <div style="display:grid;gap:var(--space-4)">
+          <div style="padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px"><span data-en>Performance profile of your five worst interactions</span><span data-de>Performance-Profil Ihrer fünf schlechtesten Interaktionen</span></div>
+          <div style="padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px"><span data-en>Bundle &amp; dependency breakdown with cut list</span><span data-de>Bundle- und Dependency-Analyse mit Streichliste</span></div>
+          <div style="padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px"><span data-en>Architecture &amp; state-management review</span><span data-de>Architektur- und State-Management-Review</span></div>
+          <div style="padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px"><span data-en>Upgrade path to current Angular, sequenced</span><span data-de>Sequenzierter Upgrade-Pfad zur aktuellen Angular-Version</span></div>
+        </div>
+      </div>
+      <div class="blueprint" style="padding:var(--space-8)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>02 · Review call</span><span data-de>02 · Review-Call</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:28px;line-height:1.05;text-transform:uppercase;margin-bottom:var(--space-6)"><span data-en>One hour, with your team</span><span data-de>Eine Stunde mit Ihrem Team</span></h3>
+        <p style="font-size:15px;color:var(--color-neutral-700);margin-bottom:var(--space-8)"><span data-en>We walk the findings top to bottom, argue about trade-offs, and leave with an agreed shortlist. Bring the developers who own the code — this is the part that changes behaviour.</span><span data-de>Wir gehen die Befunde von oben nach unten durch, diskutieren Trade-offs und einigen uns auf eine Shortlist. Bringen Sie die Entwickler mit, die den Code verantworten — das ist der Teil, der Verhalten ändert.</span></p>
+        <div style="display:grid;gap:var(--space-4)">
+          <div style="padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px"><span data-en>Walkthrough of high-priority findings</span><span data-de>Durchgang der Befunde mit hoher Priorität</span></div>
+          <div style="padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px"><span data-en>Effort estimates per fix, in developer days</span><span data-de>Aufwandsschätzung pro Fix, in Entwicklertagen</span></div>
+          <div style="padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px"><span data-en>Q&amp;A with your engineers, recorded if you want it</span><span data-de>Q&amp;A mit Ihren Entwicklern, auf Wunsch aufgezeichnet</span></div>
+          <div style="padding-top:var(--space-4);border-top:1px solid var(--color-divider);font-size:14.5px"><span data-en>Optional: I implement the top fixes next</span><span data-de>Optional: Ich setze die wichtigsten Fixes anschließend um</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider)">
+    <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>Process</span><span data-de>Ablauf</span></div>
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:clamp(2rem,4vw,3rem)"><span data-en>Five days, start to report</span><span data-de>Fünf Tage bis zum Bericht</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--color-divider);border:1px solid var(--color-divider)">
+      <div style="background:var(--color-bg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)"><span data-en>Day 0</span><span data-de>Tag 0</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:20px;text-transform:uppercase;line-height:1.1"><span data-en>Kick-off</span><span data-de>Kick-off</span></h3>
+        <p style="font-size:14px;color:var(--color-neutral-700)"><span data-en>NDA and one-page SOW signed, read-only repo access, a three-question intake form. No workshop required.</span><span data-de>NDA und einseitiges SOW unterzeichnet, lesender Repo-Zugang, ein Fragebogen mit drei Fragen. Kein Workshop nötig.</span></p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)"><span data-en>Day 1</span><span data-de>Tag 1</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:20px;text-transform:uppercase;line-height:1.1"><span data-en>Static analysis</span><span data-de>Statische Analyse</span></h3>
+        <p style="font-size:14px;color:var(--color-neutral-700)"><span data-en>Module graph, dependency health, lint and type strictness, test coverage where it matters.</span><span data-de>Modulgraph, Dependency-Health, Lint- und Typstrenge, Testabdeckung dort, wo sie zählt.</span></p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)"><span data-en>Day 2–3</span><span data-de>Tag 2–3</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:20px;text-transform:uppercase;line-height:1.1">Profiling</h3>
+        <p style="font-size:14px;color:var(--color-neutral-700)"><span data-en>Runtime traces on the interactions that hurt, bundle audit, change-detection and network waterfalls.</span><span data-de>Runtime-Traces der kritischen Interaktionen, Bundle-Audit, Change Detection und Netzwerk-Wasserfälle.</span></p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)"><span data-en>Day 4</span><span data-de>Tag 4</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:20px;text-transform:uppercase;line-height:1.1"><span data-en>Report</span><span data-de>Bericht</span></h3>
+        <p style="font-size:14px;color:var(--color-neutral-700)"><span data-en>Findings ranked high / medium / low, each with evidence, effort and the concrete fix.</span><span data-de>Befunde nach hoch / mittel / niedrig sortiert, jeweils mit Belegen, Aufwand und konkreter Lösung.</span></p>
+      </div>
+      <div style="background:var(--color-bg);padding:var(--space-8);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)"><span data-en>Day 5</span><span data-de>Tag 5</span></div>
+        <h3 style="font-family:var(--font-heading);font-weight:600;font-size:20px;text-transform:uppercase;line-height:1.1"><span data-en>Review call</span><span data-de>Review-Call</span></h3>
+        <p style="font-size:14px;color:var(--color-neutral-700)"><span data-en>One hour with your team, an agreed shortlist, and a decision on whether I implement it.</span><span data-de>Eine Stunde mit Ihrem Team, eine abgestimmte Shortlist und die Entscheidung, ob ich umsetze.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);border-bottom:1px solid var(--color-divider);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,4vw,3.5rem);align-items:center">
+    <div>
+      <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-4)"><span data-en>Who runs it</span><span data-de>Wer es durchführt</span></div>
+      <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin-bottom:var(--space-6)">Rezgar Muhammad</h2>
+      <p style="font-size:16px;color:var(--color-neutral-800);max-width:52ch;margin-bottom:var(--space-6)"><span data-en>Senior Software Engineer in Hamburg, shipping Angular in production since 2017 — resource planning for European aerospace, industrial IoT monitoring on Kubernetes, firmware portals for renewable energy. iSAQB-certified software architect, so the recommendations account for the system around the frontend, not just the components.</span><span data-de>Senior Software Engineer in Hamburg, seit 2017 Angular in Produktion — Ressourcenplanung für die europäische Luft- und Raumfahrt, industrielles IoT-Monitoring auf Kubernetes, Firmware-Portale für erneuerbare Energien. iSAQB-zertifizierter Softwarearchitekt: die Empfehlungen berücksichtigen das System um das Frontend, nicht nur die Komponenten.</span></p>
+      <p style="font-size:16px;color:var(--color-neutral-800);max-width:52ch"><span data-en>I run these audits myself. No junior on the file, no template filled in by someone else.</span><span data-de>Ich führe diese Audits selbst durch. Kein Junior am Projekt, keine von anderen ausgefüllte Vorlage.</span></p>
+    </div>
+    <div class="blueprint" style="padding:var(--space-8)">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="display:grid;gap:var(--space-6)">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Years in production Angular</span><span data-de>Jahre Angular in Produktion</span></span><span style="font-family:var(--font-heading);font-weight:600;font-size:38px;line-height:1;color:var(--color-accent-700)">7+</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6);padding-top:var(--space-4);border-top:1px solid var(--color-divider)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Enterprise codebases</span><span data-de>Unternehmens-Codebasen</span></span><span style="font-family:var(--font-heading);font-weight:600;font-size:38px;line-height:1;color:var(--color-accent-700)">6</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:var(--space-6);padding-top:var(--space-4);border-top:1px solid var(--color-divider)"><span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)"><span data-en>Certified architect</span><span data-de>Zertifizierter Architekt</span></span><span style="font-family:var(--font-heading);font-weight:600;font-size:30px;line-height:1;color:var(--color-accent-700)">iSAQB</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(3rem,6vw,5.5rem) clamp(1.25rem,5vw,4rem);text-align:center">
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4vw,3.25rem);line-height:1;text-transform:uppercase;margin:0 auto var(--space-6);max-width:24ch"><span data-en>Send me the repo. I'll tell you if it's worth auditing.</span><span data-de>Schicken Sie mir das Repo. Ich sage Ihnen, ob ein Audit sich lohnt.</span></h2>
+    <p style="font-size:16px;color:var(--color-neutral-800);max-width:52ch;margin:0 auto var(--space-8)"><span data-en>One email with your stack, your Angular version and the thing that's slow. I reply within two working days with a yes, a no, or a cheaper suggestion.</span><span data-de>Eine E-Mail mit Ihrem Stack, Ihrer Angular-Version und dem, was langsam ist. Ich antworte innerhalb von zwei Arbeitstagen — mit einem Ja, einem Nein oder einem günstigeren Vorschlag.</span></p>
+    <div style="display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap">
+      <a href="mailto:mail@rezgar-muhammad.de?subject=Angular%20audit%20enquiry" class="btn btn-primary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px">mail@rezgar-muhammad.de</a>
+      <a href="../" class="btn btn-secondary" style="letter-spacing:.12em;text-transform:uppercase;font-size:13px"><span data-en>See my work first</span><span data-de>Erst meine Projekte ansehen</span></a>
+    </div>
+  </section>
+
+  <footer style="display:flex;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;padding:var(--space-8) clamp(1.25rem,5vw,4rem);border-top:1px solid var(--color-divider);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">
+    <span>© 2026 Rezgar Muhammad</span>
+    <span><span data-en>Hamburg, Germany</span><span data-de>Hamburg, Deutschland</span></span>
+  </footer>
+</div>
+<script>
+(function(){
+  var KEY='rm-lang';
+  function apply(l){document.body.classList.toggle('lang-de',l==='de');document.documentElement.lang=l;}
+  try{apply(localStorage.getItem(KEY)==='de'?'de':'en');}catch(e){}
+  window.setLang=function(l){apply(l);try{localStorage.setItem(KEY,l);}catch(e){}};
+})();
+</script>
+</body>
+</html>
